@@ -1,14 +1,5 @@
-// =============================
-// Zlecenia – mobile-first UI (mockup)
-// -----------------------------
-// - Mobile: lista kart (1 rekord = 1 karta)
-// - Desktop: MUI DataGrid (wypełnia wysokość strony)
-// - Status/online steruje kolorami ikon i badge
-// - Header sticky na mobile
-// - Wysokość strony: 1080px (wrapper na cały widok)
-// - Dark/Light toggle (Switch)
-// =============================
 
+// LINE 477 FOR SIZE !!! 100VH AND 100VW FOR SCALE TESTING !!!
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 import { useMediaQuery } from "@mui/material";
@@ -55,19 +46,18 @@ const statusColorMap: Record<
 > = {
   Odebrane: { color: "default" },
   "Gotowe do wydania": { color: "success" },
-  // W trakcie = NIEBIESKI (info)
   "W trakcie": { color: "info" },
   Zaplanowane: { color: "warning" },
 };
 
-export default function CarsyMockup() {
+export default function Zlecenia() {
   const theme = useTheme();
 
   // Breakpoint mobile (zależny od aktualnego theme)
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery("(max-width: 850px)");
 
   // Breakpoint tablet (>= sm i < md)
-  const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+  const isTablet = useMediaQuery(theme.breakpoints.between(850, "md"));
 
   // --- Dane mockupowe ---
   const rows = React.useMemo(
@@ -344,7 +334,6 @@ export default function CarsyMockup() {
       {
         field: "status",
         headerName: "Status",
-        // Na tablecie pozwalamy kolumnie zejść poniżej 50px (żeby zadziałała ikonka)
         flex: isTablet ? 0 : 1,
         width: isTablet ? 48 : undefined,
         minWidth: 40,
@@ -356,7 +345,6 @@ export default function CarsyMockup() {
               ? theme.palette.grey[400]
               : theme.palette[cfg.color].main;
 
-          // jeśli kolumna jest bardzo wąska (<50px) – pokaż tylko ikonę statusu
           const isNarrow =
             (typeof params.colDef?.computedWidth === "number" &&
               params.colDef.computedWidth < 50) ||
@@ -454,19 +442,17 @@ export default function CarsyMockup() {
       { field: "dataWprowadzenia", headerName: "Wprowadzenie", flex: 1 },
       { field: "dataPrzyjecia", headerName: "Przyjęcie", flex: 1 },
     ],
-    [rows, theme, isTablet]
+    [theme, isTablet]
   );
 
   // --- Minimalne testy runtime (console.warn) ---
   React.useEffect(() => {
     if (process.env.NODE_ENV !== "production") {
-      // Existing checks (do not change)
       rows.forEach((r) => {
         if (!r.phone) console.warn("Row missing phone:", r);
         if (!r.klient) console.warn("Row missing klient:", r);
       });
 
-      // Additional checks (extra test cases)
       const ids = new Set<number>();
       rows.forEach((r) => {
         if (ids.has(r.id)) console.warn("Duplicate row id:", r.id);
@@ -487,8 +473,18 @@ export default function CarsyMockup() {
     <>
       <CssBaseline />
 
-      {/* Page wrapper: stała wysokość 1080px */}
-      <Box sx={{ height: "1080px", overflow: "auto", backgroundColor: theme.palette.background.default }}>
+      {/* Page wrapper: fills viewport */}
+      {/* for testing remove margin set everything to 100vh and 100vw */}
+      <Box 
+        sx={{ 
+          margin: "10px",  
+          minHeight: "80vh",
+          width: "80vw",
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: theme.palette.background.default,
+        }}
+      >
         {/* Menu z 3 kropek (desktop + mobile) */}
         <Menu
           anchorEl={menuAnchor}
@@ -504,7 +500,7 @@ export default function CarsyMockup() {
                 <Box
                   sx={{
                     pr: 3,
-                    borderRight: `1px solid ${theme.palette.grey[400]}`,
+                    borderRight: `1px solid ${theme.palette.divider}`,
                   }}
                 >
                   <Box
@@ -574,14 +570,18 @@ export default function CarsyMockup() {
         {/* Global styles dla DataGrid */}
         <GlobalStyles
           styles={{
-            /* Force dark background for shadcn/ui Card */
+            "*": {
+              boxSizing: "border-box",
+            },
             ".bg-card, .card": {
               backgroundColor: theme.palette.background.paper,
               color: theme.palette.text.primary,
             },
-            // Ustawiamy tło całego canvasa (html/body/root) wg theme
             "html, body, #root": {
               height: "100%",
+              width: "100%",
+              margin: 0,
+              padding: 0,
               backgroundColor: theme.palette.background.default,
               color: theme.palette.text.primary,
             },
@@ -601,11 +601,12 @@ export default function CarsyMockup() {
         {/* Container */}
         <Box
           sx={{
-            padding: isMobile ? "0" : "24px 24px 20px 24px",
             display: "flex",
             flexDirection: "column",
-            height: "100%",
+            flex: 1,
             backgroundColor: theme.palette.background.default,
+            width: "100%",
+            boxSizing: "border-box",
           }}
         >
           {/* Sticky header wrapper (tylko mobile) */}
@@ -617,7 +618,7 @@ export default function CarsyMockup() {
               backgroundColor: theme.palette.background.default,
             }}
           >
-            {/* APP HEADER (ciemne tło wg theme) */}
+            {/* APP HEADER */}
             <Box
               sx={{
                 px: isMobile ? 2 : 3,
@@ -632,7 +633,7 @@ export default function CarsyMockup() {
             >
               {/* Left: burger + title */}
               <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                <IconButton size="small" sx={{ color: theme.palette.success.main }}>
+                <IconButton size="small" sx={{ color: theme.palette.primary.main }}>
                   <svg
                     width={22}
                     height={22}
@@ -646,7 +647,7 @@ export default function CarsyMockup() {
                       width={18}
                       height={2}
                       rx={1}
-                      fill={theme.palette.success.main}
+                      fill={theme.palette.primary.main}
                     />
                     <rect
                       x={3}
@@ -654,7 +655,7 @@ export default function CarsyMockup() {
                       width={18}
                       height={2}
                       rx={1}
-                      fill={theme.palette.success.main}
+                      fill={theme.palette.primary.main}
                     />
                     <rect
                       x={3}
@@ -662,7 +663,7 @@ export default function CarsyMockup() {
                       width={18}
                       height={2}
                       rx={1}
-                      fill={theme.palette.success.main}
+                      fill={theme.palette.primary.main}
                     />
                   </svg>
                 </IconButton>
@@ -670,14 +671,14 @@ export default function CarsyMockup() {
                   sx={{
                     fontSize: 26,
                     fontWeight: 700,
-                    color: theme.palette.success.main,
+                    color: theme.palette.primary.main,
                   }}
                 >
                   Zlecenia
                 </Box>
               </Box>
 
-              {/* Right: desktop search + toggle + settings */}
+              {/* Right: desktop search + settings */}
               <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
                 {!isMobile && (
                   <>
@@ -712,7 +713,7 @@ export default function CarsyMockup() {
                         border: `1px solid ${theme.palette.divider}`,
                       }}
                     >
-                      <SearchIcon sx={{ color: theme.palette.success.main }} />
+                      <SearchIcon sx={{ color: theme.palette.primary.main }} />
                     </IconButton>
                   </>
                 )}
@@ -724,7 +725,7 @@ export default function CarsyMockup() {
                     border: `1px solid ${theme.palette.divider}`,
                   }}
                 >
-                  <SettingsIcon sx={{ color: theme.palette.success.main }} />
+                  <SettingsIcon sx={{ color: theme.palette.primary.main }} />
                 </IconButton>
               </Box>
             </Box>
@@ -740,7 +741,7 @@ export default function CarsyMockup() {
             />
           </Box>
 
-          {/* Main card (zawartość: mobile list / desktop grid) */}
+          {/* Main card */}
           <Card
             sx={{
               backgroundColor: theme.palette.background.paper,
@@ -748,6 +749,9 @@ export default function CarsyMockup() {
               flexDirection: "column",
               position: "relative",
               zIndex: 1,
+              flex: 1,
+              width: "100%",
+              maxWidth: "none",
               borderRadius: "0 0 8px 8px",
               overflow: "hidden",
               border: `1px solid ${theme.palette.divider}`,
@@ -759,13 +763,13 @@ export default function CarsyMockup() {
                 display: "flex",
                 flexDirection: "column",
                 flex: 1,
+                width: "100%",
+                "&:last-child": { pb: 0 },
               }}
             >
               {isMobile ? (
-                // -------------------------
                 // MOBILE: lista kart
-                // -------------------------
-                <Box sx={{ px: 1.5, py: 2, display: "grid", gap: 1.25 }}>
+                <Box sx={{ px: 1.5, py: 2, display: "grid", gap: 1.25, overflow: "auto" }}>
                   {filteredRows.map((row: any) => {
                     const cfg = statusColorMap[row.status] ??
                       ({ color: "primary" } as const);
@@ -858,7 +862,7 @@ export default function CarsyMockup() {
                             </Box>
                           </Box>
 
-                          {/* Dates (compact) */}
+                          {/* Dates */}
                           <Box
                             sx={{
                               mt: 0.75,
@@ -873,7 +877,7 @@ export default function CarsyMockup() {
                             <Box>Przyj.: {row.dataPrzyjecia}</Box>
                           </Box>
 
-                          {/* Actions: big touch targets (Wiadomość + Zadzwoń) */}
+                          {/* Actions */}
                           <Box
                             sx={{
                               mt: 1,
@@ -938,10 +942,8 @@ export default function CarsyMockup() {
                   )}
                 </Box>
               ) : (
-                // -------------------------
                 // DESKTOP: DataGrid
-                // -------------------------
-                <Box sx={{ flex: 1, minHeight: 0, pb: "20px" }}>
+                <Box sx={{ flex: 1, minHeight: 0, width: "100%" }}>
                   <DataGrid
                     rowHeight={56}
                     rows={filteredRows}
@@ -953,6 +955,8 @@ export default function CarsyMockup() {
                     }}
                     sx={{
                       border: 0,
+                      width: "100%",
+                      height: "100%",
                       backgroundColor: theme.palette.background.paper,
                       "& .MuiDataGrid-columnHeaders": {
                         backgroundColor: theme.palette.background.paper,

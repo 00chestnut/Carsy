@@ -6,53 +6,54 @@ import Zlecenia from "./comp/zlecenia";
 import theme from "./styles/theme.ts";
 
 export default function App() {
-  const [showWarsztat, setShowWarsztat] = React.useState(true);
+  const [showWarsztat, setShowWarsztat] = React.useState(false);
 
   return (
     <ThemeProvider theme={theme}>
-      {/* This Box is the full screen background */}
-      <Box
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => setShowWarsztat(!showWarsztat)}
         sx={{
-          minWidth: "100vw", // Full screen width
-          minHeight: "100vh", // Full screen height
-          display: "flex", // Flexbox for centering
-          alignItems: "center", // Center vertically
-          justifyContent: "center", // Center horizontally
-          backgroundColor: "#e8f5e9", // Light green background
-          padding: 2, // Small padding around edges
+          position: "fixed",
+          top: 16,
+          right: 16,
+          zIndex: 10000,
         }}
       >
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setShowWarsztat(!showWarsztat)}
-          sx={{
-            position: "fixed",
-            top: 16,
-            right: 16,
-            zIndex: 10,
-          }}
-        >
-          Switch to {showWarsztat ? "Orders" : "Workshop"}
-        </Button>
+        Switch to {showWarsztat ? "Orders" : "Workshop"}
+      </Button>
 
-        {/* This Box wraps the form and adds the shadow */}
+      {showWarsztat ? (
+        // Workshop form - centered with white box
         <Box
           sx={{
-            backgroundColor: "white", // White box background
-            borderRadius: 3, // Rounded corners
-            boxShadow: "0 8px 32px rgba(0,0,0,0.15)", // Nice shadow
-            overflow: "hidden", // Keep corners rounded
+            minWidth: "100vw",
+            minHeight: "100vh",
             display: "flex",
-            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "#e8f5e9",
+            padding: 2,
           }}
         >
-        
-
-          {showWarsztat ? <MojWarsztat /> : <Zlecenia />}
+          <Box
+            sx={{
+              backgroundColor: "white",
+              borderRadius: 3,
+              boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
+              overflow: "hidden",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <MojWarsztat />
+          </Box>
         </Box>
-      </Box>
-      
+      ) : (
+        // Orders - full screen, no wrapper
+        <Zlecenia />
+      )}
     </ThemeProvider>
   );
 }
