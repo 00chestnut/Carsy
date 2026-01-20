@@ -24,11 +24,9 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           // Default styles for all buttons
-          borderRadius: 2, // Rounded corners
           fontFamily: 'inherit', // Use the app's font
           fontWeight: 600, // Semi-bold text
           textTransform: 'none', // No uppercase
-          height: 42, // Fixed height
         },
         // Styles for contained buttons (uses primary color by default)
         contained: {
@@ -54,8 +52,6 @@ const theme = createTheme({
         root: {
           // Styles for the input container
           '& .MuiOutlinedInput-root': {
-            borderRadius: 2, // Rounded corners
-            height: 42, // Fixed height
             // Hover state: green border
             '&:hover .MuiOutlinedInput-notchedOutline': {
               borderColor: '#2e7d32', // Primary color for hover border
