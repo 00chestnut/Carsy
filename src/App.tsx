@@ -10,17 +10,28 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => setShowWarsztat(!showWarsztat)}
-        sx={{
-          position: "fixed",
-          top: 16,
-          right: 16,
-          zIndex: 10000,
-        }}
-      >
+<Button
+  variant="contained"
+  color="primary"
+  onClick={() => setShowWarsztat(!showWarsztat)}
+  sx={{
+    position: "fixed",
+    top: 16,
+    right: 16,
+    zIndex: 10000,
+    opacity: 0.15,
+    transition: "opacity 0.3s, transform 0.25s",
+    ":hover": { opacity: 0.6, transform: "rotateZ(360deg)" },
+    ":before": {
+      content: '""',
+      position: "absolute",
+      top: -25,
+      left: -25,
+      right: -25,
+      bottom: -25,
+    }
+  }}
+>
         Switch to {showWarsztat ? "Orders" : "Workshop"}
       </Button>
 
