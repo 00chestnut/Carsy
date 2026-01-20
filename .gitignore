@@ -1,0 +1,52 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# Compiled files and directories
+*.o
+*.class
+build/
+dist/
+
+# Dependency folders
+node_modules/
+venv/
+env/
+
+# Log and temporary files
+*.log
+npm-debug.log
+.DS_Store # macOS
+Thumbs.db # Windows
+
+# Editor/IDE specific files
+.vscode/
+.idea/
+*.swp
+
+# Secrets and credentials (Never commit these!)
+.env
+config.local.js
+
+# OS generated files (often hidden)
+.DS_Store
