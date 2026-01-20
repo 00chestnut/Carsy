@@ -1,89 +1,67 @@
 import { createTheme } from '@mui/material/styles';
 
-// Create a custom theme with global overrides
-// This theme defines colors, typography, and component styles for your entire MUI app.
-// To customize, change the values below. For more options, see: https://mui.com/material-ui/customization/theming/
 const theme = createTheme({
-  // Palette defines the color scheme. These colors are used by components like buttons and inputs.
   palette: {
-    // Primary color: Used for main actions (e.g., contained buttons, focused inputs)
     primary: {
-      main: '#2e7d32', // Green color - change this hex code to your desired primary color
+      main: '#2e7d32',
     },
-    // Secondary color: Used for less prominent elements (e.g., outlined buttons)
     secondary: {
-      main: '#616161', // Grey color - change this for secondary elements
+      main: '#616161',
     },
-    // You can add more palette colors like 'success', 'error', 'warning', 'info' if needed
-    // Example: success: { main: '#4caf50' },
   },
-  // Components allow you to override default styles for specific MUI components
   components: {
-    // MuiButton: Global styles for all Button components
     MuiButton: {
       styleOverrides: {
         root: {
-          // Default styles for all buttons
-          fontFamily: 'inherit', // Use the app's font
-          fontWeight: 600, // Semi-bold text
-          textTransform: 'none', // No uppercase
+          fontFamily: 'inherit',
+          fontWeight: 600,
+          textTransform: 'none',
         },
-        // Styles for contained buttons (uses primary color by default)
         contained: {
-          backgroundColor: '#2e7d32', // Explicitly set to primary color
+          backgroundColor: '#2e7d32',
           '&:hover': {
-            backgroundColor: '#1b5e20', // Darker shade on hover - adjust as needed
+            backgroundColor: '#1b5e20',
           },
         },
-        // Styles for outlined buttons (uses secondary color)
         outlined: {
-          color: '#616161', // Text color
-          borderColor: '#bdbdbd', // Border color
+          color: '#616161',
+          borderColor: '#bdbdbd',
           '&:hover': {
-            backgroundColor: '#eeeeee', // Light background on hover
-            borderColor: '#9e9e9e', // Darker border on hover
+            backgroundColor: '#eeeeee',
+            borderColor: '#9e9e9e',
           },
         },
       },
     },
-    // MuiTextField: Global styles for all TextField components (inputs)
     MuiTextField: {
       styleOverrides: {
         root: {
-          // Styles for the input container
           '& .MuiOutlinedInput-root': {
-            // Hover state: green border
             '&:hover .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#2e7d32', // Primary color for hover border
+              borderColor: '#2e7d32',
             },
-            // Focused state: green border
             '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-              borderColor: '#2e7d32', // Primary color for focus border
+              borderColor: '#2e7d32',
             },
-            // Hover background
             '&:hover': {
-              backgroundColor: '#eef6f0', // Light green background on hover
+              backgroundColor: '#eef6f0',
             },
           },
-          // Styles for the input text
           '& .MuiOutlinedInput-input': {
             boxSizing: 'border-box',
             padding: '10px 14px',
             lineHeight: '22px',
-            transform: 'translateY(-1px)', // Slight vertical adjustment
-            // Responsive font size for small screens
+            transform: 'translateY(-1px)',
             '@media (max-width:390px)': {
               fontSize: '10px',
             },
           },
-          // Styles for the label when not shrunk (empty input)
           '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
             transform: 'translate(14px, 10px) scale(1)',
             lineHeight: '22px',
           },
-          // Focused label color
           '& .MuiInputLabel-root.Mui-focused': {
-            color: '#2e7d32', // Primary color for focused label
+            color: '#2e7d32',
           },
         },
       },
