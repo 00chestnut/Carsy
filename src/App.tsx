@@ -224,40 +224,6 @@ export default function MyWorkshopMockup() {
           sx={{
             p: 3,
             backgroundColor: "#f5f6f5",
-
-            // --- Input height 42 ---
-            "& .MuiOutlinedInput-root": {
-              borderRadius: 2,
-              height: 42,
-            },
-
-            // Tekst w inpucie (selector bardziej specyficzny) + mobile font size
-            "& .MuiOutlinedInput-input": {
-              boxSizing: "border-box",
-              padding: "10px 14px",
-              lineHeight: "22px",
-              transform: "translateY(-1px)",
-              "@media (max-width:390px)": {
-                fontSize: "10px",
-              },
-            },
-
-            // hover / focus zielony (error bez zmian)
-            "& .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#2e7d32",
-            },
-            "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline": {
-              borderColor: "#2e7d32",
-            },
-
-            // label w stanie nie-shrink (puste pole)
-            "& .MuiInputLabel-root:not(.MuiInputLabel-shrink)": {
-              transform: "translate(14px, 10px) scale(1)",
-              lineHeight: "22px",
-            },
-            "& .MuiInputLabel-root.Mui-focused": { color: "#2e7d32" },
-
-            "& .MuiOutlinedInput-root:hover": { backgroundColor: "#eef6f0" },
           }}
         >
           <Typography sx={{ fontSize: 16, fontWeight: 700, mb: 1 }}>Dane warsztatu</Typography>
@@ -290,16 +256,6 @@ export default function MyWorkshopMockup() {
                 variant="contained"
                 fullWidth
                 onClick={handleFetchFromCeidg}
-                sx={{
-                  height: 42,
-                  borderRadius: 2,
-                  backgroundColor: "#2e7d32",
-                  fontFamily: "inherit",
-                  fontWeight: 600,
-                  textTransform: "none",
-                  lineHeight: 1.2,
-                  "@media (max-width:390px)": { fontSize: "10px" },
-                }}
               >
                 Pobierz z CEiDG
               </Button>
@@ -380,15 +336,7 @@ export default function MyWorkshopMockup() {
                 <Button
                   variant="outlined"
                   sx={{
-                    height: 42,
-                    borderRadius: 2,
-                    fontFamily: "inherit",
-                    fontWeight: 600,
-                    textTransform: "none",
-                    color: "#616161",
-                    borderColor: "#bdbdbd",
                     mr: 1,
-                    "&:hover": { backgroundColor: "#eeeeee", borderColor: "#9e9e9e" },
                   }}
                   onClick={clearForm}
                 >
@@ -397,14 +345,6 @@ export default function MyWorkshopMockup() {
 
                 <Button
                   variant="contained"
-                  sx={{
-                    height: 42,
-                    borderRadius: 2,
-                    backgroundColor: "#2e7d32",
-                    fontFamily: "inherit",
-                    fontWeight: 600,
-                    textTransform: "none",
-                  }}
                   onClick={handleSave}
                 >
                   Zapisz mój warsztat
