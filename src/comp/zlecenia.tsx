@@ -11,7 +11,6 @@
 
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import {
   CssBaseline,
@@ -21,8 +20,6 @@ import {
   Box,
   Chip,
   Tooltip,
-  Switch,
-  FormControlLabel,
   Card,
   CardContent,
 } from "@mui/material";
@@ -34,24 +31,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import PhoneIcon from "@mui/icons-material/Phone";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import Menu from "@mui/material/Menu";
-
-// --- Theme factory (Light / Dark – MUI) ---
-const getTheme = (mode: "light" | "dark") =>
-  createTheme({
-    palette: {
-      mode,
-      // standardowy zielony z MUI
-      primary: { main: "#4caf50", light: "#81c784" },
-      success: { main: "#4caf50" },
-      error: { main: "#ef5350" },
-      warning: { main: "#ffb74d" },
-      background:
-        mode === "dark"
-          ? { default: "#121212", paper: "#1e1e1e" }
-          : { default: "#f4faf6", paper: "#ffffff" },
-    },
-    typography: { fontFamily: "Montserrat, sans-serif" },
-  });
+import { useTheme } from "@mui/material/styles";
 
 // --- Helpers: kolory i tooltipy dla ikon akcji (online/offline/inactive) ---
 function actionIconColor(theme: any, row: { inactive?: boolean; online?: boolean }) {
@@ -81,9 +61,7 @@ const statusColorMap: Record<
 };
 
 export default function CarsyMockup() {
-  // --- Light / Dark mode toggle ---
-  const [mode, setMode] = React.useState<"light" | "dark">("dark");
-  const theme = React.useMemo(() => getTheme(mode), [mode]);
+  const theme = useTheme();
 
   // Breakpoint mobile (zależny od aktualnego theme)
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -506,11 +484,11 @@ export default function CarsyMockup() {
   }, [rows]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <CssBaseline />
 
-      {/* Page wrapper: responsive height to fit viewport */}
-      <Box sx={{ height: "100vh", overflow: "auto", backgroundColor: theme.palette.background.default }}>
+      {/* Page wrapper: stała wysokość 1080px */}
+      <Box sx={{ height: "1080px", overflow: "auto", backgroundColor: theme.palette.background.default }}>
         {/* Menu z 3 kropek (desktop + mobile) */}
         <Menu
           anchorEl={menuAnchor}
@@ -622,7 +600,6 @@ export default function CarsyMockup() {
 
         {/* Container */}
         <Box
-          className="max-w-6xl mx-auto"
           sx={{
             padding: isMobile ? "0" : "24px 24px 20px 24px",
             display: "flex",
@@ -650,10 +627,7 @@ export default function CarsyMockup() {
                 justifyContent: "space-between",
                 backgroundColor: theme.palette.background.paper,
                 borderRadius: "8px 8px 0 0",
-                boxShadow:
-                  mode === "dark"
-                    ? "0 4px 12px rgba(0,0,0,0.6)"
-                    : "0 4px 12px rgba(0,0,0,0.12)",
+                boxShadow: "0 4px 12px rgba(0,0,0,0.12)",
               }}
             >
               {/* Left: burger + title */}
@@ -742,25 +716,6 @@ export default function CarsyMockup() {
                     </IconButton>
                   </>
                 )}
-
-                {/* Light / Dark toggle */}
-                <FormControlLabel
-                  sx={{
-                    m: 0,
-                    color: theme.palette.success.main,
-                    "& .MuiFormControlLabel-label": { fontSize: 12 },
-                  }}
-                  control={
-                    <Switch
-                      checked={mode === "dark"}
-                      onChange={() =>
-                        setMode((m) => (m === "dark" ? "light" : "dark"))
-                      }
-                      color="success"
-                    />
-                  }
-                  label={mode === "dark" ? "Dark" : "Light"}
-                />
 
                 {/* Settings button */}
                 <IconButton
@@ -1029,6 +984,6 @@ export default function CarsyMockup() {
           </Card>
         </Box>
       </Box>
-    </ThemeProvider>
+    </>
   );
 }

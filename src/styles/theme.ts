@@ -8,6 +8,22 @@ const theme = createTheme({
     secondary: {
       main: '#616161',
     },
+    success: {
+      main: '#4caf50',
+    },
+    error: {
+      main: '#ef5350',
+    },
+    warning: {
+      main: '#ffb74d',
+    },
+    background: {
+      default: '#f4faf6',
+      paper: '#ffffff',
+    },
+  },
+  typography: {
+    fontFamily: 'Montserrat, sans-serif',
   },
   components: {
     MuiButton: {
