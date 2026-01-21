@@ -1,5 +1,29 @@
 import { createTheme } from '@mui/material/styles';
 
+// --- Elevation levels ---
+const elevations = {
+  card: 4,
+  cardHover: 8,
+  overlay: 8,
+  header: 4,
+};
+
+// --- Surface colors ---
+const surfaces = {
+  headerBg: '#f5f6f5',
+  headerDivider: '#c5c7c5',
+  pageBg: '#eef6f0',
+  cardBg: '#f5f6f5',
+};
+
+// --- Overlay & gradient utilities ---
+const overlayGradient = `linear-gradient(to right, 
+  rgba(0, 0, 0, 0.05) 0%, 
+  rgba(0, 0, 0, 0.02) 20%,
+  transparent 50%, 
+  rgba(0, 0, 0, 0.02) 80%,
+  rgba(0, 0, 0, 0.05) 100%)`;
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -23,6 +47,10 @@ const theme = createTheme({
       paper: '#ffffff',
     },
   },
+  // @ts-ignore - attach custom utilities to theme
+  elevations,
+  surfaces,
+  overlayGradient,
   typography: {
     fontFamily: 'Montserrat, sans-serif',
   },

@@ -78,7 +78,7 @@ export default function Login() {
                 px: { xs: 3, md: 6 },
                 py: 3,
                 bgcolor: "background.paper",
-                boxShadow: theme.shadows[6],
+                boxShadow: theme.shadows[4],
                 position: "relative",
                 zIndex: 10,
                 transform: { xs: "none", md: "translateY(-18px)" },
@@ -126,6 +126,7 @@ export default function Login() {
           {/* Form */}
         <Box
             sx={{
+                bgcolor: "background.paper",
                 boxShadow: theme.shadows[4],
                 borderRadius: theme.shape.borderRadius,
                 maxWidth: 420,
@@ -357,12 +358,7 @@ export default function Login() {
               sx={{
                 position: "absolute",
                 inset: 0,
-                background: `linear-gradient(to right, 
-								rgba(0, 0, 0, 0.05) 0%, 
-								rgba(0, 0, 0, 0.02) 20%,
-								transparent 50%, 
-								rgba(0, 0, 0, 0.02) 80%,
-								rgba(0, 0, 0, 0.05) 100%)`,
+                background: (theme as any).overlayGradient,
                 backdropFilter: imageLoaded ? "blur(0px)" : "blur(3px)",
                 opacity: imageLoaded ? 0 : 0.6,
                 transition: "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
@@ -379,9 +375,9 @@ export default function Login() {
                 width: "75%",
                 height: "70%",
                 borderRadius: 3,
-                bgcolor: "grey.400",
-                boxShadow: theme.shadows[12],
-                opacity: imageLoaded ? 0 : 0.3,
+                bgcolor: "background.paper",
+                boxShadow: theme.shadows[8],
+                opacity: imageLoaded ? 0 : 0.28,
                 transition: "opacity 0.6s ease-out",
                 display: "flex",
                 alignItems: "center",

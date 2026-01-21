@@ -8,6 +8,7 @@ import {
   TextField,
   Tooltip,
   Typography,
+  useTheme,
 } from "@mui/material";
 
 /**
@@ -110,6 +111,7 @@ function AppHeader({
 }: {
   title: string;
 }) {
+  const theme = useTheme();
   return (
     <>
       <Box
@@ -119,19 +121,20 @@ function AppHeader({
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          backgroundColor: "#f5f6f5",
+          backgroundColor: (theme as any).surfaces?.headerBg ?? "#f5f6f5",
           borderRadius: "8px 8px 0 0",
-          boxShadow: "0 4px 12px rgba(0,0,0,0.12)",
+          boxShadow: theme.shadows[(theme as any).elevations?.header ?? 4],
         }}
       >
-        <Box sx={{ fontSize: 26, fontWeight: 700, color: "#2e7d32" }}>{title}</Box>
+        <Box sx={{ fontSize: 26, fontWeight: 700, color: "primary.main" }}>{title}</Box>
       </Box>
-      <Box sx={{ height: 4, backgroundColor: "#c5c7c5" }} />
+      <Box sx={{ height: 4, backgroundColor: (theme as any).surfaces?.headerDivider ?? "#c5c7c5" }} />
     </>
   );
 }
 
 export default function MojWarsztat() {
+  const theme = useTheme();
   const [form, setForm] = React.useState<WorkshopForm>({
     nip: "",
     phone: "",
@@ -209,7 +212,7 @@ export default function MojWarsztat() {
   const postalError = form.postalCode.length > 0 && !isValidPostalCode(form.postalCode);
 
   return (
-    <Box sx={{ p: 1, display: "flex", justifyContent: "center", backgroundColor: "#eef6f0" }}>
+    <Box sx={{ p: 1, display: "flex", justifyContent: "center", backgroundColor: (theme as any).surfaces?.pageBg ?? "#eef6f0" }}>
       <Card
         sx={{
           width: "100%",
@@ -223,7 +226,7 @@ export default function MojWarsztat() {
         <CardContent
           sx={{
             p: 2,
-            backgroundColor: "#f5f6f5",
+            backgroundColor: (theme as any).surfaces?.cardBg ?? "#f5f6f5",
 
             // --- Input height 42 ---
             "& .MuiOutlinedInput-root": {
