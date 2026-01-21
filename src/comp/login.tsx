@@ -3,6 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import obrazek from "../assets/obrazek.jpg";
+import carsylogo from "../assets/carsylogo.svg";
 export default function Login() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -50,9 +51,19 @@ export default function Login() {
                   variant="h6"
                   color="primary"
                   fontWeight={700}
-                  sx={{ m: 0 }}
+                  sx={{ m: 0, display: 'flex', alignItems: 'center', gap: 1 }}
                 >
-                    <img src="./assets/carsylogo.svg" alt="Carsy"></img>
+                    <Box
+                      component="img"
+                      src={carsylogo}
+                      alt="Carsy"
+                      sx={{
+                        height: { xs: 36, md: 64 },
+                        width: "auto",
+                        display: "block",
+                        flexShrink: 0,
+                      }}
+                    />
                 </Typography>
               </Box>
               <Typography variant="h5" color="primary" fontWeight={650}>
