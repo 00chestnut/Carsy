@@ -1,6 +1,5 @@
 import { Box, Button, Link, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-// import Preloader from "./Preloader";
 import { useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import obrazek from "../assets/obrazek.jpg";
@@ -11,7 +10,6 @@ export default function Login() {
 
   return (
     <>
-      {/* <Preloader /> */}
       <Box
         sx={{
           minHeight: "100vh",
@@ -19,19 +17,20 @@ export default function Login() {
           backgroundColor: theme.palette.background.default,
           overflow: "hidden",
           display: "grid",
-          gridTemplateColumns: isMobile ? "1fr" : "40vw 1fr",
+          gridTemplateColumns: { xs: "1fr", md: "40vw 1fr" },
         }}
       >
         {/* Left panel */}
         <Box
           sx={{
-            p: isMobile ? 3 : 5,
+            px: { xs: theme.spacing(3), md: theme.spacing(5) },
+            py: { xs: theme.spacing(3), md: theme.spacing(5) },
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            gap: 4,
-            marginLeft: isMobile ? 0 : 6,
-            marginRight: isMobile ? 0 : 6,
+            gap: theme.spacing(4),
+            marginLeft: { xs: 0, md: theme.spacing(6) },
+            marginRight: { xs: 0, md: theme.spacing(6) },
           }}
         >
           <Box>
@@ -63,18 +62,24 @@ export default function Login() {
             {/* Intro text */}
             <Box
               sx={{
-                mt: 12,
-                mx: isMobile ? 0 : -6, // negative margin to stretch past parent padding
-                px: isMobile ? 0 : 6, // add padding back inside so text stays aligned
-                py: 2,
+                mt: { xs: 6, md: 12 },
+                ml: { xs: -3, md: -12 }, // always touches left edge
+                px: { xs: 3, md: 6 },
+                py: 3,
                 bgcolor: "background.paper",
-                borderRadius: 0, // no rounding
-                boxShadow: theme.shadows[8],
+                boxShadow: theme.shadows[6],
                 position: "relative",
-                zIndex: 10, // higher z-index to override margins inside parent
-                transform: isMobile ? "none" : "translateY(-18px)",
-                transition: "transform 200ms ease, box-shadow 200ms ease",
-                width: isMobile ? "100%" : "calc(100% + 96px)", // account for negative margins (6 * 8px * 2)
+                zIndex: 10,
+                transform: { xs: "none", md: "translateY(-18px)" },
+                transition: theme.transitions.create(['transform', 'box-shadow'], {
+                  duration: theme.transitions.duration.standard,
+                  easing: theme.transitions.easing.easeOut,
+                }),
+                width: { xs: "calc(100% + 24px)", md: "calc(100% + 96px)" }, // stretches to edge
+                '&:hover': {
+                  boxShadow: theme.shadows[8],
+                  transform: { xs: "none", md: "translateY(-20px)" },
+                },
               }}
             >
               <Typography
@@ -82,23 +87,25 @@ export default function Login() {
                 color="primary"
                 sx={{
                   maxWidth: 360,
-                  mb: 1,
-                  mt: 0, // remove large top margin so the box is wrapped tightly
-                  fontWeight: 700,
-                  lineHeight: 1.2,
-                  letterSpacing: -0.5,
+                  mb: theme.spacing(1),
+                  mt: 0,
+                  fontWeight: theme.typography.fontWeightBold,
+                  lineHeight: theme.typography.h4.lineHeight,
+                  letterSpacing: theme.typography.h4.letterSpacing,
+                  fontSize: { xs: '1.75rem', sm: '2.125rem' },
                 }}
               >
                 Cyfrowy grafik dla prawdziwych fachowców
               </Typography>
               <Typography
-                variant="h5"
+                variant="h6"
                 color="text.secondary"
                 sx={{
                   maxWidth: 360,
-                  fontWeight: 500,
-                  lineHeight: 1.6,
-                  fontSize: "1rem",
+                  fontWeight: theme.typography.fontWeightRegular,
+                  lineHeight: theme.typography.h6.lineHeight,
+                  letterSpacing: theme.typography.h6.letterSpacing,
+                  fontSize: { xs: '1rem', sm: '1.125rem' },
                 }}
               >
                 Serwis auta, który szanuje Twój czas.
@@ -106,25 +113,27 @@ export default function Login() {
             </Box>
         </Box>
           {/* Form */}
-          <Box
+        <Box
             sx={{
-              maxWidth: 420,
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-              gap: 3,
-              justifyContent: "center",
-              alignItems: "center",
-              mx: "auto",
-              p: 2,
-              borderRadius: 2,
-              boxShadow: `0 2px 8px rgba(0, 0, 0, 0.08)`,
+                boxShadow: theme.shadows[4],
+                borderRadius: theme.shape.borderRadius,
+                maxWidth: 420,
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                gap: theme.spacing(3),
+                justifyContent: "center",
+                alignItems: "stretch",
+                alignSelf: "center",
+                flexShrink: 0,
+                p: { xs: theme.spacing(2), md: theme.spacing(3) },
             }}
-          >
+        >
             <Button
               variant="contained"
               size="large"
               fullWidth
+              type="button"
               sx={{
                 borderRadius: 999,
                 py: 1.3,
@@ -145,6 +154,7 @@ export default function Login() {
               variant="contained"
               size="large"
               fullWidth
+              type="button"
               sx={{
                 borderRadius: 999,
                 py: 1.3,
@@ -171,10 +181,12 @@ export default function Login() {
               flexDirection: "column",
               gap: 1.25,
               alignItems: "flex-start",
+              flexShrink: 0,
             }}
           >
             <Link
-              href="#"
+              component="button"
+              type="button"
               underline="none"
               color="text.secondary"
               variant="body2"
@@ -184,6 +196,10 @@ export default function Login() {
                 fontWeight: 500,
                 letterSpacing: 0.3,
                 transition: "color .18s ease",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                textAlign: "left",
                 "&:hover": { color: "primary.main" },
                 "&:after": {
                   content: '""',
@@ -201,7 +217,8 @@ export default function Login() {
               Nie pamiętam hasła
             </Link>
             <Link
-              href="#"
+              component="button"
+              type="button"
               underline="none"
               color="text.secondary"
               variant="body2"
@@ -211,6 +228,10 @@ export default function Login() {
                 fontWeight: 500,
                 letterSpacing: 0.3,
                 transition: "color .18s ease",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                textAlign: "left",
                 "&:hover": { color: "primary.main" },
                 "&:after": {
                   content: '""',
@@ -228,7 +249,8 @@ export default function Login() {
               Problem z aplikacją?
             </Link>
             <Link
-              href="#"
+              component="button"
+              type="button"
               underline="none"
               color="text.secondary"
               variant="body2"
@@ -238,6 +260,10 @@ export default function Login() {
                 fontWeight: 500,
                 letterSpacing: 0.3,
                 transition: "color .18s ease",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                textAlign: "left",
                 "&:hover": { color: "primary.main" },
                 "&:after": {
                   content: '""',
@@ -308,7 +334,7 @@ export default function Login() {
                 top: 0,
                 bottom: 0,
                 left: 0,
-                width: "80px", 
+                width: "5px", 
                 background: `linear-gradient(to right, ${theme.palette.background.default} 0%, transparent 100%)`,
                 zIndex: 100,
                 pointerEvents: "none",
