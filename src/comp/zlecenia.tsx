@@ -477,7 +477,7 @@ export default function Zlecenia() {
       {/* for testing remove margin set everything to 100vh and 100vw */}
       <Box 
         sx={{ 
-          margin: "0px",  
+          margin: "f0px",  
           minHeight: "100vh",
           width: "100vw",
           display: "flex",

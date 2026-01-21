@@ -2,7 +2,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import { Box, Button } from "@mui/material";
 import React from "react";
 import MojWarsztat from "./comp/mojWarsztat";
-import Zlecenia from "./comp/zlecenia";
+// import Zlecenia from "./comp/zlecenia";
+import Login from "./comp/login.tsx";
 import theme from "./styles/theme.ts";
 
 export default function App() {
@@ -62,8 +63,8 @@ export default function App() {
           </Box>
         </Box>
       ) : (
-        // Orders - full screen, no wrapper
-        <Zlecenia />
+        // <Zlecenia />
+        <Login />
       )}
     </ThemeProvider>
   );
