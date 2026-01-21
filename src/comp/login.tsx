@@ -6,6 +6,7 @@ import {
 	Divider,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import Preloader from "./Preloader";
 import { useMediaQuery } from "@mui/material";
 
 export default function Login() {
@@ -13,11 +14,13 @@ export default function Login() {
 	const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
 	return (
-		<Box
-			sx={{
-				minHeight: "100vh",
-				width: "100vw",
-				backgroundColor: theme.palette.background.default,
+		<>
+			<Preloader />
+			<Box
+				sx={{
+					minHeight: "100vh",
+					width: "100vw",
+					backgroundColor: theme.palette.background.default,
 				overflow: "hidden",
 				display: "grid",
 				gridTemplateColumns: isMobile ? "1fr" : "40vw 1fr",
@@ -214,5 +217,6 @@ export default function Login() {
 				</Box>
 			)}
 		</Box>
+		</>
 	);
 }
