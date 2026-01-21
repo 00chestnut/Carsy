@@ -2,7 +2,6 @@ import {
 	Box,
 	Button,
 	Link,
-	TextField,
 	Typography,
 	Divider,
 } from "@mui/material";
@@ -21,155 +20,176 @@ export default function Login() {
 				backgroundColor: theme.palette.background.default,
 				overflow: "hidden",
 				display: "grid",
-				gridTemplateColumns: isMobile ? "1fr" : "1.05fr 1.2fr",
+				gridTemplateColumns: isMobile ? "1fr" : "42.5vw 1fr",
 			}}
 		>
-				{/* Left panel */}
-				<Box
-					sx={{
-						p: isMobile ? 3 : 5,
-						display: "flex",
-						flexDirection: "column",
-						justifyContent: "space-between",
-						gap: 4,
-					}}
-				>
-					<Box>
-						{/* Logo */}
-						<Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 4 }}>
-							<Box
-								sx={{
-									width: 56,
-									height: 56,
-									borderRadius: "50%",
-									bgcolor: "primary.main",
-									display: "flex",
-									alignItems: "center",
-									justifyContent: "center",
-									color: "primary.contrastText",
-								}}
-							>
-								<Typography variant="h5" fontWeight={700}>
-									C
-								</Typography>
-							</Box>
-							<Typography
-								variant="h4"
-								color="primary"
-								fontWeight={700}
-							>
-								Carsy
-							</Typography>
+			{/* Left panel */}
+			<Box
+				sx={{
+					p: isMobile ? 3 : 5,
+					display: "flex",
+					flexDirection: "column",
+					justifyContent: "space-between",
+					gap: 4,
+                    marginLeft: isMobile ? 0 : 6,
+                    marginRight: isMobile ? 0 : 6,
+				}}
+			>
+				<Box> 
+                    {/* header, intro needs to be separated */}
+					{/* Logo */}
+					<Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 2, mb: 4}}>
+						<Box>
+                            <Typography variant="h6" color="primary" fontWeight={700} sx={{ m: 0 }}>🚗logo</Typography>
 						</Box>
-
 						<Typography
 							variant="h5"
-							fontWeight={700}
-							sx={{ mb: 1 }}
+							color="primary"
+							fontWeight={650}
 						>
 							Witaj w Carsy
 						</Typography>
-						<Typography
-							variant="body1"
-							color="text.secondary"
-							sx={{ maxWidth: 360, mb: 2, fontWeight: 600 }}
-						>
-							Cyfrowy grafik dla prawdziwych fachowców
-						</Typography>
-						<Typography
-							variant="body2"
-							color="text.secondary"
-							sx={{ maxWidth: 360 }}
-						>
-							Serwis auta, który szanuje Twój czas.
-						</Typography>
 					</Box>
+                    {/* Intro text */}
+					<Typography
+						variant="body1"
+						color="text.secondary"
+						sx={{ maxWidth: 360, mb: 2, mt: 10, fontWeight: 600 }}
 
-					{/* Form */}
-					<Box sx={{ maxWidth: 420, display: "flex", flexDirection: "column" }}>
-						<TextField
-							label="Email"
-							placeholder="twoj@email.com"
-							fullWidth
-							sx={{ mb: 2 }}
-						/>
-						<TextField
-							label="Hasło"
-							placeholder="••••••••"
-							type="password"
-							fullWidth
-							sx={{ mb: 3 }}
-						/>
-						<Button
-							variant="contained"
-							size="large"
-							sx={{ borderRadius: 999, py: 1.3 }}
-						>
-							Zaloguj się
-						</Button>
-					</Box>
-
-					{/* Footer links */}
-					<Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-						<Link
-							href="#"
-							underline="hover"
-							color="text.secondary"
-							variant="body2"
-						>
-							Nie pamiętam hasła
-						</Link>
-						<Link
-							href="#"
-							underline="hover"
-							color="text.secondary"
-							variant="body2"
-						>
-							Problem z aplikacją?
-						</Link>
-						<Link
-							href="#"
-							underline="hover"
-							color="text.secondary"
-							variant="body2"
-						>
-							Kontakt
-						</Link>
-					</Box>
+					>
+						Cyfrowy grafik dla prawdziwych fachowców
+					</Typography>
+					<Typography
+						variant="body2"
+						color="text.secondary"
+						sx={{ maxWidth: 360 }}
+					>
+						Serwis auta, który szanuje Twój czas.
+					</Typography>
 				</Box>
 
-				{/* Right panel (image placeholder) */}
-				{!isMobile && (
-					<Box
+				{/* Form */}
+				<Box sx={{ maxWidth: 420, display: "flex", flexDirection: "column" }}>
+					<Button
+						variant="contained"
+						size="large"
+						sx={{ borderRadius: 999, py: 1.3 }}
+					>
+						Zaloguj się
+					</Button>
+				</Box>
+
+				{/* Footer links */}
+				<Box sx={{ display: "flex", flexDirection: "column", gap: 1.25, alignItems: 'flex-start' }}>
+					<Link
+						href="#"
+						underline="none"
+						color="text.secondary"
+						variant="body2"
 						sx={{
-							position: "relative",
-							bgcolor: "grey.200",
-							display: "flex",
-							alignItems: "center",
-							justifyContent: "center",
+							position: 'relative',
+							py: 0.4,
+							transition: 'color .18s ease',
+							'&:hover': { color: 'primary.main' },
+							'&:after': {
+								content: '""',
+								position: 'absolute',
+								left: 0,
+								bottom: 0,
+								height: 2,
+								width: 0,
+								bgcolor: 'primary.main',
+								transition: 'width .18s ease',
+							},
+							'&:hover:after': { width: '100%' },
 						}}
 					>
-						<Box
-							sx={{
-								width: "75%",
-								height: "70%",
-								borderRadius: 3,
-								bgcolor: "grey.300",
-							}}
-						/>
-
-
-						<Divider
-							sx={{
-								position: "absolute",
-								bottom: 0,
+						Nie pamiętam hasła
+					</Link>
+					<Link
+						href="#"
+						underline="none"
+						color="text.secondary"
+						variant="body2"
+						sx={{
+							position: 'relative',
+							py: 0.4,
+							transition: 'color .18s ease',
+							'&:hover': { color: 'primary.main' },
+							'&:after': {
+								content: '""',
+								position: 'absolute',
 								left: 0,
-								right: 0,
-								opacity: 0.2,
-							}}
-						/>
-					</Box>
-				)}
+								bottom: 0,
+								height: 2,
+								width: 0,
+								bgcolor: 'primary.main',
+								transition: 'width .18s ease',
+							},
+							'&:hover:after': { width: '100%' },
+						}}
+					>
+						Problem z aplikacją?
+					</Link>
+					<Link
+						href="#"
+						underline="none"
+						color="text.secondary"
+						variant="body2"
+						sx={{
+							position: 'relative',
+							py: 0.4,
+							transition: 'color .18s ease',
+							'&:hover': { color: 'primary.main' },
+							'&:after': {
+								content: '""',
+								position: 'absolute',
+								left: 0,
+								bottom: 0,
+								height: 2,
+								width: 0,
+								bgcolor: 'primary.main',
+								transition: 'width .18s ease',
+							},
+							'&:hover:after': { width: '100%' },
+						}}
+					>
+						Kontakt
+					</Link>
+				</Box>
+			</Box>
+
+			{/* Right panel (image placeholder) */}
+			{!isMobile && (
+				<Box
+					sx={{
+						position: "relative",
+						bgcolor: "grey.200",
+						display: "flex",
+						alignItems: "center",
+						justifyContent: "center",
+					}}
+				>
+					<Box
+						sx={{
+							width: "75%",
+							height: "70%",
+							borderRadius: 3,
+							bgcolor: "grey.300",
+						}}
+					/>
+
+					<Divider
+						sx={{
+							position: "absolute",
+							bottom: 0,
+							left: 0,
+							right: 0,
+							opacity: 0.2,
+						}}
+					/>
+				</Box>
+			)}
 		</Box>
 	);
 }
