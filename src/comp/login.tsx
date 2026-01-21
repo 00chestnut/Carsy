@@ -4,7 +4,6 @@ import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
 import { useState } from "react";
 import obrazek from "../assets/obrazek.jpg";
-
 export default function Login() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -65,17 +64,17 @@ export default function Login() {
             <Box
               sx={{
                 mt: 12,
-                mx: 0,
-                px: 0, // no internal horizontal padding so it goes edge-to-edge
+                mx: isMobile ? 0 : -6, // negative margin to stretch past parent padding
+                px: isMobile ? 0 : 6, // add padding back inside so text stays aligned
                 py: 2,
                 bgcolor: "background.paper",
                 borderRadius: 0, // no rounding
                 boxShadow: theme.shadows[8],
                 position: "relative",
-                zIndex: 1200, // higher z-index to override margins inside parent
+                zIndex: 10, // higher z-index to override margins inside parent
                 transform: isMobile ? "none" : "translateY(-18px)",
                 transition: "transform 200ms ease, box-shadow 200ms ease",
-                width: "100%",
+                width: isMobile ? "100%" : "calc(100% + 96px)", // account for negative margins (6 * 8px * 2)
               }}
             >
               <Typography
@@ -296,10 +295,24 @@ export default function Login() {
                 backgroundRepeat: "no-repeat",
                 opacity: imageLoaded ? 1 : 0,
                 transition: "opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
-                zIndex: 2,
+                zIndex: 10,
                 filter: imageLoaded ? "blur(0px)" : "blur(5px)",
               }}
               onLoad={() => setImageLoaded(true)}
+            />
+
+            {/* Left edge blur gradient for smooth transition */}
+            <Box
+              sx={{
+                position: "absolute",
+                top: 0,
+                bottom: 0,
+                left: 0,
+                width: "80px", 
+                background: `linear-gradient(to right, ${theme.palette.background.default} 0%, transparent 100%)`,
+                zIndex: 100,
+                pointerEvents: "none",
+              }}
             />
 
             {/* Smooth blur gradient transition overlay */}
@@ -316,7 +329,7 @@ export default function Login() {
                 backdropFilter: imageLoaded ? "blur(0px)" : "blur(3px)",
                 opacity: imageLoaded ? 0 : 0.6,
                 transition: "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
-                zIndex: 1.5,
+                zIndex: 25,
                 pointerEvents: "none",
               }}
             />
@@ -347,6 +360,7 @@ export default function Login() {
               src={obrazek}
               alt="Login background"
               style={{
+                zIndex: 100,
                 display: "none",
               }}
               onLoad={() => setImageLoaded(true)}
