@@ -52,7 +52,7 @@ export default function Login() {
                   fontWeight={700}
                   sx={{ m: 0 }}
                 >
-                  🚗logo
+                    <img src="./assets/carsylogo.svg" alt="Carsy"></img>
                 </Typography>
               </Box>
               <Typography variant="h5" color="primary" fontWeight={650}>
