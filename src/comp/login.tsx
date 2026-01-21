@@ -20,7 +20,7 @@ export default function Login() {
 				backgroundColor: theme.palette.background.default,
 				overflow: "hidden",
 				display: "grid",
-				gridTemplateColumns: isMobile ? "1fr" : "42.5vw 1fr",
+				gridTemplateColumns: isMobile ? "1fr" : "40vw 1fr",
 			}}
 		>
 			{/* Left panel */}
@@ -51,33 +51,56 @@ export default function Login() {
 						</Typography>
 					</Box>
                     {/* Intro text */}
-					<Typography
-						variant="body1"
-						color="text.secondary"
-						sx={{ maxWidth: 360, mb: 2, mt: 10, fontWeight: 600 }}
-
-					>
-						Cyfrowy grafik dla prawdziwych fachowców
-					</Typography>
-					<Typography
-						variant="body2"
-						color="text.secondary"
-						sx={{ maxWidth: 360 }}
-					>
-						Serwis auta, który szanuje Twój czas.
-					</Typography>
+                    <Typography
+                        variant="h4"
+                        color="primary"
+                        sx={{ maxWidth: 360, mb: 3, mt: 10, fontWeight: 700 }}
+                    >
+                        Cyfrowy grafik dla prawdziwych fachowców
+                    </Typography>
+                    <Typography
+                        variant="h5"
+                        color="text.secondary"
+                        sx={{ maxWidth: 360, fontWeight: 600 }}
+                    >
+                        Serwis auta, który szanuje Twój czas.
+                    </Typography>
 				</Box>
 
 				{/* Form */}
-				<Box sx={{ maxWidth: 420, display: "flex", flexDirection: "column" }}>
-					<Button
-						variant="contained"
-						size="large"
-						sx={{ borderRadius: 999, py: 1.3 }}
-					>
-						Zaloguj się
-					</Button>
-				</Box>
+                <Box sx={{ 
+                    maxWidth: 420, 
+                    width: "100%",
+                    display: "flex", 
+                    flexDirection: "column", 
+                    gap: 3, 
+                    justifyContent: "center", 
+                    alignItems: "center", 
+                    mx: "auto"
+                }}>
+                    <Button
+                        variant="contained"
+                        size="large"
+                        fullWidth
+                        sx={{ borderRadius: 999, py: 1.3 }}
+                    >
+                        Zaloguj się
+                    </Button>
+                    <Button
+                        color="secondary"
+                        variant="contained"
+                        size="large"
+                        fullWidth
+                        sx={{
+                            borderRadius: 999,
+                            py: 1.3,
+                            backgroundColor: 'secondary.main',
+                            '&:hover': { backgroundColor: 'primary.main' },
+                        }}
+                    >
+                        Załóż konto
+                    </Button>
+                </Box>
 
 				{/* Footer links */}
 				<Box sx={{ display: "flex", flexDirection: "column", gap: 1.25, alignItems: 'flex-start' }}>

@@ -5,8 +5,9 @@ const theme = createTheme({
     primary: {
       main: '#2e7d32',
     },
+    /* dimmed, slightly grayish green for secondary actions */
     secondary: {
-      main: '#616161',
+      main: '#629e62',
     },
     success: {
       main: '#4caf50',
@@ -37,6 +38,12 @@ const theme = createTheme({
           backgroundColor: '#2e7d32',
           '&:hover': {
             backgroundColor: '#1b5e20',
+          },
+        },
+        containedSecondary: {
+          backgroundColor: '#6b8e6b',
+          '&:hover': {
+            backgroundColor: '#59795a',
           },
         },
         outlined: {
