@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Button,
@@ -91,7 +92,7 @@ export function isValidPostalCode(v: string): boolean {
 export function isValidNip(v: string): boolean {
   return /^\d{10}$/.test(v.replace(/\s+/g, "").trim());
 }
-
+  const { t } = useTranslation(["mojWarsztat"]);
 // --- Minimal tests (DEV only) ---
 if (typeof window !== "undefined") {
   console.assert(isValidPostalCode("00-000") === true);
@@ -160,7 +161,7 @@ export default function MojWarsztat() {
   const handleFetchFromCeidg = async () => {
     // 1) Walidacja NIP
     if (!isValidNip(form.nip)) {
-      console.warn("Niepoprawny NIP — nie pobieram z CEIDG");
+      console.warn(t("NiepoprawnyNIP", "Niepoprawny NIP — nie pobieram z CEIDG"));
       return;
     }
 
@@ -177,16 +178,16 @@ export default function MojWarsztat() {
         ),
       }));
     } catch (e) {
-      console.warn("CEIDG API error, używam mocka:", e);
+      console.warn(t("CEIDGAPIError", "CEIDG API error, używam mocka:"), e);
       // Fallback: dotychczasowy mock
       setForm((p) => ({
         ...p,
-        workshopName: p.workshopName || "Przykładowy Warsztat",
-        street: p.street || "Przykładowa",
+        workshopName: p.workshopName || t("PrzykladowyWarsztat", "Przykładowy Warsztat"),
+        street: p.street || t("PrzykladowaUlica", "Przykładowa ulica"),
         buildingNo: p.buildingNo || "12",
         apartmentNo: p.apartmentNo || "3",
         postalCode: p.postalCode || "00-000",
-        city: p.city || "Warszawa",
+        city: p.city || t("Warszawa", "Warszawa"),
       }));
     }
   };
@@ -207,9 +208,9 @@ export default function MojWarsztat() {
   const handleSave = async () => {
     try {
       await saveWorkshop(form);
-      console.log("SAVED", form);
+      console.log(t("SAVED", "SAVED"), form);
     } catch (e) {
-      console.warn("SAVE error:", e);
+      console.warn(t("SAVEError", "SAVE error:"), e);
     }
   };
 
@@ -231,7 +232,7 @@ export default function MojWarsztat() {
           overflow: "hidden",
         }}
       >
-        <AppHeader title="Mój warsztat" />
+        <AppHeader title={t("MojWarsztat", "Mój warsztat")} />
 
         <CardContent
           component="form"
@@ -248,9 +249,9 @@ export default function MojWarsztat() {
             },
           }}
         >
-          <Typography component="h2" sx={{ fontSize: 16, fontWeight: 700, mb: 0.5 }}>Dane warsztatu</Typography>
+          <Typography component="h2" sx={{ fontSize: 16, fontWeight: 700, mb: 0.5 }}>{t("DaneWarsztatu", "Dane warsztatu")}</Typography>
           <Typography component="p" sx={{ color: "text.secondary", mb: 1.5 }}>
-            Uzupełnij dane ręcznie lub pobierz je na podstawie NIP.
+            {t("UzupelnijDaneRecznieLubPobierzNaPodstawieNIP", "Uzupełnij dane ręcznie lub pobierz je na podstawie NIP.")}
           </Typography>
           <Divider sx={{ mb: 2 }} aria-hidden="true" />
 
@@ -264,14 +265,14 @@ export default function MojWarsztat() {
             {/* Rząd 1 */}
             <Box sx={{ gridColumn: "span 8" }}>
               <TextField
-                label="NIP"
+                label={t("NIP", "NIP")}
                 value={form.nip}
                 onChange={setField("nip")}
                 fullWidth
                 error={nipError}
-                helperText={nipError ? "NIP powinien mieć 10 cyfr." : " "}
+                helperText={nipError ? t("NIPError", "NIP powinien mieć 10 cyfr.")  : " "}
                 inputProps={{
-                  "aria-label": "NIP firmy",
+                  "aria-label": t("NIPFirmy", "NIP firmy"),
                   "aria-invalid": nipError,
                   inputMode: "numeric",
                   autoComplete: "off",
@@ -284,7 +285,7 @@ export default function MojWarsztat() {
                 variant="contained"
                 fullWidth
                 onClick={handleFetchFromCeidg}
-                aria-label="Pobierz dane z CEiDG na podstawie NIP"
+                aria-label={t("PobierzDaneZCEiDG", "Pobierz dane z CEiDG na podstawie NIP")}
                 sx={{
                   height: 42,
                   borderRadius: 2,
@@ -292,19 +293,19 @@ export default function MojWarsztat() {
                   "@media (max-width:390px)": { fontSize: "10px" },
                 }}
               >
-                Pobierz z CEiDG
+                {t("PobierzZCEiDG", "Pobierz z CEiDG")}
               </Button>
             </Box>
 
             {/* Rząd 2 */}
             <Box sx={{ gridColumn: "span 12" }}>
               <TextField
-                label="Numer telefonu do warsztatu"
+                label={t("NumerTelefonuDoWarsztatu", "Numer telefonu do warsztatu")}
                 value={form.phone}
                 onChange={setField("phone")}
                 fullWidth
                 inputProps={{
-                  "aria-label": "Numer telefonu do warsztatu",
+                  "aria-label": t("NumerTelefonuDoWarsztatu", "Numer telefonu do warsztatu"),
                   inputMode: "tel",
                   autoComplete: "tel",
                 }}
@@ -314,12 +315,12 @@ export default function MojWarsztat() {
             {/* Rząd 3 */}
             <Box sx={{ gridColumn: "span 12" }}>
               <TextField
-                label="Nazwa firmy (warsztatu)"
+                label={t("NazwaFirmyLubWarsztatu", "Nazwa firmy (warsztatu)")}
                 value={form.workshopName}
                 onChange={setField("workshopName")}
                 fullWidth
                 inputProps={{
-                  "aria-label": "Nazwa firmy lub warsztatu",
+                  "aria-label": t("NazwaFirmyLubWarsztatu", "Nazwa firmy lub warsztatu"),
                   autoComplete: "organization",
                 }}
               />
@@ -328,12 +329,12 @@ export default function MojWarsztat() {
             {/* Rząd 4 */}
             <Box sx={{ gridColumn: { xs: "span 6", "@media (max-width: 400px)": { gridColumn: "span 12" } } }}>
               <TextField
-                label="Ulica"
+                label={t("Ulica", "Ulica")}
                 value={form.street}
                 onChange={setField("street")}
                 fullWidth
                 inputProps={{
-                  "aria-label": "Ulica",
+                  "aria-label": t("Ulica", "Ulica"),
                   autoComplete: "street-address",
                 }}
               />
@@ -346,20 +347,20 @@ export default function MojWarsztat() {
                 onChange={setField("buildingNo")}
                 fullWidth
                 inputProps={{
-                  "aria-label": "Numer budynku",
+                  "aria-label": t("NumerBudynku", "Numer budynku"),
                 }}
               />
             </Box>
 
             <Box sx={{ gridColumn: { xs: "span 3", "@media (max-width: 400px)": { gridColumn: "span 6" } } }}>
-              <Tooltip title="Opcjonalne" arrow>
+              <Tooltip title={t("Opcjonalne", "Opcjonalne")} arrow>
                 <TextField
-                  label="Nr lokalu *"
+                  label={t("NumerLokalu", "Nr lokalu *")}
                   value={form.apartmentNo}
                   onChange={setField("apartmentNo")}
                   fullWidth
                   inputProps={{
-                    "aria-label": "Numer lokalu (opcjonalne)",
+                    "aria-label": t("NumerLokaluOpcjonalne", "Numer lokalu (opcjonalne)"),
                   }}
                 />
               </Tooltip>
@@ -368,14 +369,14 @@ export default function MojWarsztat() {
             {/* Rząd 5 */}
             <Box sx={{ gridColumn: { xs: "span 3", "@media (max-width: 400px)": { gridColumn: "span 6" } } }}>
               <TextField
-                label="Kod pocztowy"
+                label={t("KodPocztowy", "Kod pocztowy")}
                 value={form.postalCode}
                 onChange={setField("postalCode")}
                 fullWidth
                 error={postalError}
-                helperText={postalError ? "Kod 00-000" : " "}
+                helperText={postalError ? t("KodPocztowyError", "Kod 00-000") : " "}
                 inputProps={{
-                  "aria-label": "Kod pocztowy",
+                  "aria-label": t("KodPocztowy", "Kod pocztowy"),
                   "aria-invalid": postalError,
                   inputMode: "numeric",
                   autoComplete: "postal-code",
@@ -385,12 +386,12 @@ export default function MojWarsztat() {
 
             <Box sx={{ gridColumn: { xs: "span 9", "@media (max-width: 400px)": { gridColumn: "span 6" } } }}>
               <TextField
-                label="Miasto"
+                label={t("Miasto", "Miasto")}
                 value={form.city}
                 onChange={setField("city")}
                 fullWidth
                 inputProps={{
-                  "aria-label": "Miasto",
+                  "aria-label": t("Miasto", "Miasto"),
                   autoComplete: "address-level2",
                 }}
               />
@@ -415,9 +416,9 @@ export default function MojWarsztat() {
                     mr: 1,
                   }}
                   onClick={clearForm}
-                  aria-label="Wyczyść wszystkie pola formularza"
+                  aria-label={t("WyczyscWszystkiePolaFormularza", "Wyczyść wszystkie pola formularza")}
                 >
-                  Wyczyść
+                  {t("Wyczysc", "Wyczyść")}
                 </Button>
 
                 <Button
@@ -427,9 +428,9 @@ export default function MojWarsztat() {
                     borderRadius: 2,
                   }}
                   onClick={handleSave}
-                  aria-label="Zapisz dane warsztatu"
+                  aria-label={t("ZapiszDaneWarsztatu", "Zapisz dane warsztatu")}
                 >
-                  Zapisz mój warsztat
+                  {t("ZapiszMojWarsztat", "Zapisz mój warsztat")}
                 </Button>
               </Box>
             </Box>

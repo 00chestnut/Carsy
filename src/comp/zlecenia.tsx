@@ -23,6 +23,7 @@ import PhoneIcon from "@mui/icons-material/Phone";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import Menu from "@mui/material/Menu";
 import { useTheme } from "@mui/material/styles";
+import { useTranslation } from "react-i18next";
 
 // --- Helpers: kolory i tooltipy dla ikon akcji (online/offline/inactive) ---
 function actionIconColor(theme: any, row: { inactive?: boolean; online?: boolean }) {
@@ -58,6 +59,7 @@ export default function Zlecenia() {
 
   // Breakpoint tablet (>= sm i < md)
   const isTablet = useMediaQuery(theme.breakpoints.between(850, "md"));
+  const { t } = useTranslation(["zleceniaTSX"]);
 
   // --- Dane mockupowe ---
   const rows = React.useMemo(
@@ -70,7 +72,7 @@ export default function Zlecenia() {
         phone: "+48600000000",
         email: "adam.nowak@email.com",
         klient: "Adam Nowak",
-        status: "Zaplanowane",
+        status: t("Zaplanowane", "Zaplanowane"),
         dataWprowadzenia: "01.01.2026",
         dataPrzyjecia: "02.01.2026",
         online: true,
@@ -84,7 +86,7 @@ export default function Zlecenia() {
         phone: "+48600111111",
         email: "piotr.wisniewski@email.com",
         klient: "Piotr Wiśniewski",
-        status: "W trakcie",
+        status: t("wTrakcie", "W trakcie"),
         dataWprowadzenia: "02.01.2026",
         dataPrzyjecia: "03.01.2026",
         online: false,
@@ -98,7 +100,7 @@ export default function Zlecenia() {
         phone: "+48600222222",
         email: "anna.kaczmarek@email.com",
         klient: "Anna Kaczmarek",
-        status: "Gotowe do wydania",
+        status: t("gotoweDoWydania", "Gotowe do wydania"),
         dataWprowadzenia: "03.01.2026",
         dataPrzyjecia: "04.01.2026",
         online: true,
@@ -112,7 +114,7 @@ export default function Zlecenia() {
         phone: "+48600333333",
         email: "marcin.zielinski@email.com",
         klient: "Marcin Zieliński",
-        status: "Odebrane",
+        status: t("odebrane", "Odebrane"),
         dataWprowadzenia: "04.01.2026",
         dataPrzyjecia: "05.01.2026",
         online: false,
@@ -126,7 +128,7 @@ export default function Zlecenia() {
         phone: "+48600444444",
         email: "katarzyna.dabrowska@email.com",
         klient: "Katarzyna Dąbrowska",
-        status: "Zaplanowane",
+        status: t("Zaplanowane", "Zaplanowane"),
         dataWprowadzenia: "05.01.2026",
         dataPrzyjecia: "06.01.2026",
         online: true,
@@ -140,7 +142,7 @@ export default function Zlecenia() {
         phone: "+48600555555",
         email: "tomasz.lewandowski@email.com",
         klient: "Tomasz Lewandowski",
-        status: "W trakcie",
+        status: t("wTrakcie", "W trakcie"),
         dataWprowadzenia: "06.01.2026",
         dataPrzyjecia: "07.01.2026",
         online: false,
@@ -154,7 +156,7 @@ export default function Zlecenia() {
         phone: "+48600666666",
         email: "monika.wojcik@email.com",
         klient: "Monika Wójcik",
-        status: "Gotowe do wydania",
+        status: t("gotoweDoWydania", "Gotowe do wydania"),
         dataWprowadzenia: "07.01.2026",
         dataPrzyjecia: "08.01.2026",
         online: true,
@@ -168,7 +170,7 @@ export default function Zlecenia() {
         phone: "+48600777777",
         email: "pawel.kaminski@email.com",
         klient: "Paweł Kamiński",
-        status: "Odebrane",
+        status: t("odebrane", "Odebrane"),
         dataWprowadzenia: "08.01.2026",
         dataPrzyjecia: "09.01.2026",
         online: false,
@@ -182,7 +184,7 @@ export default function Zlecenia() {
         phone: "+48600888888",
         email: "natalia.mazur@email.com",
         klient: "Natalia Mazur",
-        status: "Zaplanowane",
+        status: t("zaplanowane", "Zaplanowane"),
         dataWprowadzenia: "09.01.2026",
         dataPrzyjecia: "10.01.2026",
         online: true,
@@ -196,7 +198,7 @@ export default function Zlecenia() {
         phone: "+48600999999",
         email: "michal.krawczyk@email.com",
         klient: "Michał Krawczyk",
-        status: "W trakcie",
+        status: t("wTrakcie", "W trakcie"),
         dataWprowadzenia: "10.01.2026",
         dataPrzyjecia: "11.01.2026",
         online: false,
@@ -210,7 +212,7 @@ export default function Zlecenia() {
         phone: "+48601010101",
         email: "pawel.lewandowski@email.com",
         klient: "Paweł Lewandowski",
-        status: "Zaplanowane",
+        status: t("zaplanowane", "Zaplanowane"),
         dataWprowadzenia: "11.01.2026",
         dataPrzyjecia: "12.01.2026",
         online: true,
@@ -224,7 +226,7 @@ export default function Zlecenia() {
         phone: "+48602020202",
         email: "magdalena.kaczmarek@email.com",
         klient: "Magdalena Kaczmarek",
-        status: "Gotowe do wydania",
+        status: t("gotoweDoWydania", "Gotowe do wydania"),
         dataWprowadzenia: "12.01.2026",
         dataPrzyjecia: "13.01.2026",
         online: true,
@@ -238,7 +240,7 @@ export default function Zlecenia() {
         phone: "+48603030303",
         email: "tomasz.zielinski@email.com",
         klient: "Tomasz Zieliński",
-        status: "Odebrane",
+        status: t("odebrane", "Odebrane"),
         dataWprowadzenia: "13.01.2026",
         dataPrzyjecia: "14.01.2026",
         online: false,
@@ -252,7 +254,7 @@ export default function Zlecenia() {
         phone: "+48604040404",
         email: "natalia.wojcik@email.com",
         klient: "Natalia Wójcik",
-        status: "W trakcie",
+        status: t("wTrakcie", "W trakcie"),
         dataWprowadzenia: "14.01.2026",
         dataPrzyjecia: "15.01.2026",
         online: false,
@@ -266,7 +268,7 @@ export default function Zlecenia() {
         phone: "+48605050505",
         email: "krzysztof.kaminski@email.com",
         klient: "Krzysztof Kamiński",
-        status: "Zaplanowane",
+        status: t("zaplanowane", "Zaplanowane"),
         dataWprowadzenia: "15.01.2026",
         dataPrzyjecia: "16.01.2026",
         online: true,
@@ -305,8 +307,8 @@ export default function Zlecenia() {
   const columns = React.useMemo(
     () => [
       {
-        field: "rejestracja",
-        headerName: "Nr rej.",
+        field: t("rejestracja", "rejestracja"),
+        headerName: t("nrRej", "Nr rej."),
         flex: 1,
         renderCell: (params: any) => (
           <Box
@@ -330,10 +332,10 @@ export default function Zlecenia() {
           </Box>
         ),
       },
-      { field: "pojazd", headerName: "Pojazd", flex: 1.4 },
+      { field: "pojazd", headerName: t("pojazd", "Pojazd"), flex: 1.4 },
       {
         field: "status",
-        headerName: "Status",
+        headerName: t("status", "Status"),
         flex: isTablet ? 0 : 1,
         width: isTablet ? 48 : undefined,
         minWidth: 40,
@@ -377,7 +379,7 @@ export default function Zlecenia() {
       },
       {
         field: "klient",
-        headerName: "Klient",
+        headerName: t("klient", "Klient"),
         flex: 1.5,
         renderCell: (params: any) => (
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
@@ -397,7 +399,7 @@ export default function Zlecenia() {
       },
       {
         field: "chat",
-        headerName: "Wiadomość",
+        headerName: t("wiadomosc", "Wiadomość"),
         width: isTablet ? 64 : 80,
         sortable: false,
         filterable: false,
@@ -420,7 +422,7 @@ export default function Zlecenia() {
       },
       {
         field: "call",
-        headerName: "Zadzwoń",
+        headerName: t("zadzwoń", "Zadzwoń"),
         width: isTablet ? 64 : 80,
         sortable: false,
         filterable: false,
@@ -439,8 +441,8 @@ export default function Zlecenia() {
           </Tooltip>
         ),
       },
-      { field: "dataWprowadzenia", headerName: "Wprowadzenie", flex: 1 },
-      { field: "dataPrzyjecia", headerName: "Przyjęcie", flex: 1 },
+      { field: "dataWprowadzenia", headerName: t("wprowadzenie", "Wprowadzenie"), flex: 1 },
+      { field: "dataPrzyjecia", headerName: t("przyjecie", "Przyjęcie"), flex: 1 },
     ],
     [theme, isTablet]
   );
@@ -566,38 +568,6 @@ export default function Zlecenia() {
             </Box>
           )}
         </Menu>
-
-        {/* Global styles dla DataGrid */}
-        {/* <GlobalStyles
-          styles={{
-            "*": {
-              boxSizing: "border-box",
-            },
-            ".bg-card, .card": {
-              backgroundColor: theme.palette.background.paper,
-              color: theme.palette.text.primary,
-            },
-            "html, body, #root": {
-              height: "100%",
-              width: "100%",
-              margin: 0,
-              padding: 0,
-              backgroundColor: theme.palette.background.default,
-              color: theme.palette.text.primary,
-            },
-            table: {
-              borderCollapse: "collapse",
-              borderRadius: "0 0 15px 15px",
-              overflow: "hidden",
-            },
-            ".MuiDataGrid-root": { borderRadius: 0 },
-            ".MuiDataGrid-columnHeaders": {
-              borderTopLeftRadius: 0,
-              borderTopRightRadius: 0,
-            },
-          }}
-        />
- */}
         {/* Container */}
         <Box
           sx={{
@@ -886,7 +856,7 @@ export default function Zlecenia() {
                               gap: 0.5,
                             }}
                           >
-                            <Tooltip title={`Wiadomość • ${actionTooltip(row)}`}>
+                            <Tooltip title={`${t("wiadomosc", "Wiadomość")} • ${actionTooltip(row)}`}>
                               <span>
                                 <IconButton
                                   size="large"
@@ -904,7 +874,7 @@ export default function Zlecenia() {
                               </span>
                             </Tooltip>
 
-                            <Tooltip title={`Zadzwoń • ${actionTooltip(row)}`}>
+                            <Tooltip title={`${t("zadzwoń", "Zadzwoń")} • ${actionTooltip(row)}`}>
                               <span>
                                 <IconButton
                                   size="large"
