@@ -34,36 +34,40 @@ export default function ForgotPassword() {
     type: "success" | "error";
     text: string;
   } | null>(null);
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handleChange =
-    (field: string) => (e: React.ChangeEvent<HTMLInputElement>) =>
+    (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
       setForm({ ...form, [field]: e.target.value });
+      setErrors((prev) => ({ ...prev, [field]: "" }));
+    };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setMessage(null);
+    setErrors({});
+
+    const nextErrors: Record<string, string> = {};
 
     if (!/\S+@\S+\.\S+/.test(form.email)) {
-      setMessage({ type: "error", text: "Wprowadź poprawny adres email." });
-      return;
+      nextErrors.email = "Wprowadź poprawny adres email.";
     }
 
     if (mode === "reset") {
       if (!form.code) {
-        setMessage({ type: "error", text: "Wprowadź kod resetowania." });
-        return;
+        nextErrors.code = "Wprowadź kod resetowania.";
       }
       if (form.password.length < 8) {
-        setMessage({
-          type: "error",
-          text: "Hasło musi mieć co najmniej 8 znaków.",
-        });
-        return;
+        nextErrors.password = "Hasło musi mieć co najmniej 8 znaków.";
       }
       if (form.password !== form.confirm) {
-        setMessage({ type: "error", text: "Hasła nie są identyczne." });
-        return;
+        nextErrors.confirm = "Hasła nie są identyczne.";
       }
+    }
+
+    if (Object.keys(nextErrors).length) {
+      setErrors(nextErrors);
+      return;
     }
 
     setLoading(true);
@@ -209,6 +213,7 @@ export default function ForgotPassword() {
           <Box component="form" onSubmit={handleSubmit} noValidate>
             <Stack spacing={2.5}>
               <TextField
+                variant="standard"
                 label="Email"
                 type="email"
                 value={form.email}
@@ -216,6 +221,8 @@ export default function ForgotPassword() {
                 fullWidth
                 required
                 autoFocus={mode === "request"}
+                error={Boolean(errors.email)}
+                helperText={errors.email || undefined}
               />
 
               {mode === "reset" && (
@@ -226,7 +233,8 @@ export default function ForgotPassword() {
                     onChange={handleChange("code")}
                     fullWidth
                     required
-                    helperText="Kod otrzymany na email"
+                    error={Boolean(errors.code)}
+                    helperText={errors.code || "Kod otrzymany na email"}
                   />
                   <TextField
                     label="Nowe hasło"
@@ -235,7 +243,8 @@ export default function ForgotPassword() {
                     onChange={handleChange("password")}
                     fullWidth
                     required
-                    helperText="Minimum 8 znaków"
+                    error={Boolean(errors.password)}
+                    helperText={errors.password || "Minimum 8 znaków"}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
@@ -256,6 +265,8 @@ export default function ForgotPassword() {
                     onChange={handleChange("confirm")}
                     fullWidth
                     required
+                    error={Boolean(errors.confirm)}
+                    helperText={errors.confirm || undefined}
                   />
                 </>
               )}
@@ -280,6 +291,7 @@ export default function ForgotPassword() {
                 onClick={() => {
                   setMode(mode === "request" ? "reset" : "request");
                   setMessage(null);
+                  setErrors({});
                 }}
                 sx={{ textTransform: "none", mt: 1 }}
               >
