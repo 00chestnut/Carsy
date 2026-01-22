@@ -1,71 +1,129 @@
 import { ThemeProvider } from "@mui/material/styles";
 import { Box, Button } from "@mui/material";
-import React from "react";
-import MojWarsztat from "./comp/mojWarsztat";
-// import Zlecenia from "./comp/zlecenia";
-import Login from "./comp/login.tsx";
+import React, { Suspense, lazy } from "react";
 import theme from "./styles/theme.ts";
+
+// Lazy load heavy components for better performance
+const MojWarsztat = lazy(() => import("./comp/mojWarsztat"));
+const Login = lazy(() => import("./comp/login.tsx"));
+
+// Simple loading fallback that matches the theme
+const LoadingFallback = () => (
+  <Box
+    sx={{
+      minWidth: "100vw",
+      minHeight: "100vh",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      backgroundColor: theme.palette.background.default,
+    }}
+    role="status"
+    aria-label="Ładowanie..."
+  />
+);
 
 export default function App() {
   const [showWarsztat, setShowWarsztat] = React.useState(false);
 
   return (
     <ThemeProvider theme={theme}>
-<Button
-  variant="contained"
-  color="primary"
-  onClick={() => setShowWarsztat(!showWarsztat)}
-  sx={{
-    position: "fixed",
-    top: 16,
-    right: 16,
-    zIndex: 10000,
-    opacity: 0.15,
-    transition: "opacity 0.3s, transform 0.25s",
-    ":hover": { opacity: 0.6, transform: "rotateZ(360deg)" },
-    ":before": {
-      content: '""',
-      position: "absolute",
-      top: -25,
-      left: -25,
-      right: -25,
-      bottom: -25,
-    }
-  }}
->
+      {/* Skip link for keyboard navigation */}
+      <Box
+        component="a"
+        href="#main-content"
+        sx={{
+          position: "absolute",
+          left: "-9999px",
+          top: "auto",
+          width: "1px",
+          height: "1px",
+          overflow: "hidden",
+          "&:focus": {
+            position: "fixed",
+            top: 16,
+            left: 16,
+            width: "auto",
+            height: "auto",
+            padding: 2,
+            backgroundColor: "primary.main",
+            color: "primary.contrastText",
+            zIndex: 10001,
+            borderRadius: 1,
+            textDecoration: "none",
+            fontWeight: 600,
+          },
+        }}
+      >
+        Przejdź do głównej treści
+      </Box>
+
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => setShowWarsztat(!showWarsztat)}
+        aria-label={`Przełącz widok na ${showWarsztat ? "Zlecenia" : "Warsztat"}`}
+        aria-pressed={showWarsztat}
+        sx={{
+          position: "fixed",
+          top: 16,
+          right: 16,
+          zIndex: 10000,
+          opacity: 0.15,
+          transition: "opacity 0.3s, transform 0.25s",
+          ":hover": { opacity: 0.6, transform: "rotateZ(360deg)" },
+          ":focus-visible": {
+            opacity: 1,
+            outline: "3px solid",
+            outlineColor: "primary.dark",
+            outlineOffset: 2,
+          },
+          ":before": {
+            content: '""',
+            position: "absolute",
+            top: -25,
+            left: -25,
+            right: -25,
+            bottom: -25,
+          }
+        }}
+      >
         Switch to {showWarsztat ? "Orders" : "Workshop"}
       </Button>
 
-      {showWarsztat ? (
-        // Workshop form - centered with white box
-        <Box
-          sx={{
-            minWidth: "100vw",
-            minHeight: "100vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "#e8f5e9",
-            padding: 2,
-          }}
-        >
-          <Box
-            sx={{
-              backgroundColor: "white",
-              borderRadius: 3,
-              boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
-              overflow: "hidden",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <MojWarsztat />
-          </Box>
+      <Suspense fallback={<LoadingFallback />}>
+        <Box id="main-content">
+          {showWarsztat ? (
+            // Workshop form - centered with white box
+            <Box
+              sx={{
+                minWidth: "100vw",
+                minHeight: "100vh",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "#e8f5e9",
+                padding: 2,
+              }}
+            >
+              <Box
+                sx={{
+                  backgroundColor: "white",
+                  borderRadius: 3,
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.15)",
+                  overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <MojWarsztat />
+              </Box>
+            </Box>
+          ) : (
+            <Login />
+          )}
         </Box>
-      ) : (
-        // <Zlecenia />
-        <Login />
-      )}
+      </Suspense>
     </ThemeProvider>
   );
 }

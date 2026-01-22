@@ -26,18 +26,25 @@ interface SignInFormElement extends HTMLFormElement {
 export default function SignInSideTemplate() {
   return (
     <Box sx={{ display: 'flex', minHeight: '100vh' }}>
-      <Box sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <Box
+        component="main"
+        role="main"
+        sx={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+      >
         <Box sx={{ width: 420, p: 3 }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
+          <Box
+            component="header"
+            sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}
+          >
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-              <IconButton>
+              <IconButton aria-label="Strona główna">
                 <BadgeRoundedIcon />
               </IconButton>
-              <Typography variant="h6">Company logo</Typography>
+              <Typography variant="h6" component="span">Company logo</Typography>
             </Box>
           </Box>
 
-          <Box component="main">
+          <Box>
             <Stack spacing={3} mb={2}>
               <Box>
                 <Typography variant="h4" component="h1">
@@ -45,15 +52,20 @@ export default function SignInSideTemplate() {
                 </Typography>
                 <Typography variant="body2">
                   New to company?{' '}
-                  <Link href="#replace-with-a-link">Sign up!</Link>
+                  <Link href="#replace-with-a-link" aria-label="Sign up for a new account">Sign up!</Link>
                 </Typography>
               </Box>
-              <Button startIcon={<GoogleIcon />} variant="outlined" fullWidth>
+              <Button
+                startIcon={<GoogleIcon />}
+                variant="outlined"
+                fullWidth
+                aria-label="Continue with Google account"
+              >
                 Continue with Google
               </Button>
             </Stack>
 
-            <Divider>or</Divider>
+            <Divider aria-hidden="true">or</Divider>
 
             <Box component="form" onSubmit={(event: React.FormEvent<SignInFormElement>) => {
               event.preventDefault();
@@ -65,25 +77,58 @@ export default function SignInSideTemplate() {
               };
               // eslint-disable-next-line no-alert
               alert(JSON.stringify(data, null, 2));
-            }} sx={{ mt: 3 }}>
+            }} sx={{ mt: 3 }} aria-label="Sign in form">
               <FormControl fullWidth margin="normal">
-                <FormLabel>Email</FormLabel>
-                <TextField name="email" type="email" variant="outlined" fullWidth />
+                <FormLabel htmlFor="email-input">Email</FormLabel>
+                <TextField
+                  id="email-input"
+                  name="email"
+                  type="email"
+                  variant="outlined"
+                  fullWidth
+                  inputProps={{
+                    autoComplete: "email",
+                    "aria-label": "Email address",
+                  }}
+                />
               </FormControl>
               <FormControl fullWidth margin="normal">
-                <FormLabel>Password</FormLabel>
-                <TextField name="password" type="password" variant="outlined" fullWidth />
+                <FormLabel htmlFor="password-input">Password</FormLabel>
+                <TextField
+                  id="password-input"
+                  name="password"
+                  type="password"
+                  variant="outlined"
+                  fullWidth
+                  inputProps={{
+                    autoComplete: "current-password",
+                    "aria-label": "Password",
+                  }}
+                />
               </FormControl>
 
               <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                  <Checkbox name="persistent" />
-                  <Typography variant="body2">Remember me</Typography>
+                  <Checkbox
+                    id="persistent-checkbox"
+                    name="persistent"
+                    inputProps={{
+                      "aria-label": "Remember me on this device",
+                    }}
+                  />
+                  <Typography
+                    component="label"
+                    htmlFor="persistent-checkbox"
+                    variant="body2"
+                    sx={{ cursor: "pointer" }}
+                  >
+                    Remember me
+                  </Typography>
                 </Box>
-                <Link href="#replace-with-a-link">Forgot your password?</Link>
+                <Link href="#replace-with-a-link" aria-label="Reset your forgotten password">Forgot your password?</Link>
               </Box>
 
-              <Button type="submit" variant="contained" fullWidth sx={{ mt: 3 }}>
+              <Button type="submit" variant="contained" fullWidth sx={{ mt: 3 }} aria-label="Sign in to your account">
                 Sign in
               </Button>
             </Box>
@@ -95,7 +140,17 @@ export default function SignInSideTemplate() {
         </Box>
       </Box>
 
-      <Box sx={{ width: { xs: 0, md: '50vw' }, display: { xs: 'none', md: 'block' }, backgroundImage: 'url(https://images.unsplash.com/photo-1527181152855-fc03fc7949c8?auto=format&w=1000&dpr=2)', backgroundSize: 'cover' }} />
+      <Box
+        component="aside"
+        role="presentation"
+        aria-hidden="true"
+        sx={{
+          width: { xs: 0, md: '50vw' },
+          display: { xs: 'none', md: 'block' },
+          backgroundImage: 'url(https://images.unsplash.com/photo-1527181152855-fc03fc7949c8?auto=format&w=1000&dpr=2)',
+          backgroundSize: 'cover'
+        }}
+      />
     </Box>
   );
 }

@@ -1,26 +1,29 @@
 import { Box, Button, Link, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
-import { useState } from "react";
+import { useState, memo } from "react";
 import obrazek from "../assets/obrazek.jpg";
 import carsylogo from "../assets/carsylogo.svg";
-export default function Login() {
+
+const Login = memo(function Login() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   const [imageLoaded, setImageLoaded] = useState(false);
 
   return (
-    <>
-      <Box
-        sx={{
-          minHeight: "100vh",
-          width: "100vw",
-          backgroundColor: theme.palette.background.default,
-          overflow: "hidden",
-          display: "grid",
-          gridTemplateColumns: { xs: "1fr", md: "40vw 1fr" },
-        }}
-      >
+    <Box
+      component="main"
+      role="main"
+      aria-label="Strona logowania"
+      sx={{
+        minHeight: "100vh",
+        width: "100vw",
+        backgroundColor: theme.palette.background.default,
+        overflow: "hidden",
+        display: "grid",
+        gridTemplateColumns: { xs: "1fr", md: "40vw 1fr" },
+      }}
+    >
         {/* Left panel */}
         <Box
           sx={{
@@ -38,6 +41,7 @@ export default function Login() {
             {/* header, intro needs to be separated */}
             {/* Logo */}
             <Box
+              component="header"
               sx={{
                 display: "flex",
                 alignItems: "center",
@@ -51,12 +55,15 @@ export default function Login() {
                   variant="h6"
                   color="primary"
                   fontWeight={700}
+                  component="div"
                   sx={{ m: 0, display: 'flex', alignItems: 'center', gap: 1 }}
                 >
                     <Box
                       component="img"
                       src={carsylogo}
-                      alt="Carsy"
+                      alt="Carsy - logo systemu zarządzania warsztatem"
+                      loading="eager"
+                      decoding="async"
                       sx={{
                         height: { xs: 36, md: 64 },
                         width: "auto",
@@ -66,12 +73,22 @@ export default function Login() {
                     />
                 </Typography>
               </Box>
-              <Typography variant="h5" color="primary" fontWeight={650}>
-                Witaj w Carsy
-              </Typography>
+              <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>
+                <Typography
+                  component="h1"
+                  variant="h5"
+                  color="primary"
+                  fontWeight={700}
+                  sx={{ fontSize: { xs: "1.125rem", md: "1.5rem" } }}
+                >
+                  Witaj w Carsy
+                </Typography>
+              </Box>
             </Box>
             {/* Intro text */}
             <Box
+              component="section"
+              aria-labelledby="intro-heading"
               sx={{
                 mt: { xs: 6, md: 12 },
                 ml: { xs: -3, md: -12 }, // always touches left edge
@@ -94,6 +111,8 @@ export default function Login() {
               }}
             >
               <Typography
+                id="intro-heading"
+                component="h2"
                 variant="h4"
                 color="primary"
                 sx={{
@@ -109,6 +128,7 @@ export default function Login() {
                 Cyfrowy grafik dla prawdziwych fachowców
               </Typography>
               <Typography
+                component="p"
                 variant="h6"
                 color="text.secondary"
                 sx={{
@@ -125,6 +145,8 @@ export default function Login() {
         </Box>
           {/* Form */}
         <Box
+            component="section"
+            aria-label="Opcje logowania"
             sx={{
                 bgcolor: "background.paper",
                 boxShadow: theme.shadows[4],
@@ -146,6 +168,7 @@ export default function Login() {
               size="large"
               fullWidth
               type="button"
+              aria-label="Zaloguj się do swojego konta"
               sx={{
                 borderRadius: 999,
                 py: 1.3,
@@ -157,6 +180,10 @@ export default function Login() {
                   boxShadow: theme.shadows[8],
                   transform: "translateY(-2px)",
                 },
+                "&:focus-visible": {
+                  outline: `3px solid ${theme.palette.primary.main}`,
+                  outlineOffset: 2,
+                },
               }}
             >
               Zaloguj się
@@ -167,6 +194,7 @@ export default function Login() {
               size="large"
               fullWidth
               type="button"
+              aria-label="Załóż nowe konto w systemie Carsy"
               sx={{
                 borderRadius: 999,
                 py: 1.3,
@@ -180,6 +208,10 @@ export default function Login() {
                   boxShadow: theme.shadows[8],
                   transform: "translateY(-2px)",
                 },
+                "&:focus-visible": {
+                  outline: `3px solid ${theme.palette.secondary.main}`,
+                  outlineOffset: 2,
+                },
               }}
             >
               Załóż konto
@@ -188,6 +220,8 @@ export default function Login() {
 
           {/* Footer links */}
           <Box
+            component="nav"
+            aria-label="Linki pomocnicze"
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -391,16 +425,23 @@ export default function Login() {
             {/* Preload image element */}
             <img
               src={obrazek}
-              alt="Login background"
+              alt=""
+              role="presentation"
+              decoding="async"
+              loading="lazy"
               style={{
-                zIndex: 100,
-                display: "none",
+                position: "absolute",
+                width: 1,
+                height: 1,
+                opacity: 0,
+                pointerEvents: "none",
               }}
               onLoad={() => setImageLoaded(true)}
             />
           </Box>
         )}
-      </Box>
-    </>
+    </Box>
   );
-}
+});
+
+export default Login;
