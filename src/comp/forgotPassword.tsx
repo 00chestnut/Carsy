@@ -14,7 +14,6 @@ import {
   useTheme,
 } from "@mui/material";
 import { Visibility, VisibilityOff, LockReset } from "@mui/icons-material";
-var validEmailCosmetic = true;
 export default function ForgotPassword() {
   const theme = useTheme();
   const [mode, setMode] = useState<"request" | "reset">("request");
@@ -36,9 +35,6 @@ export default function ForgotPassword() {
     (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
       setForm({ ...form, [field]: e.target.value });
       setErrors((prev) => ({ ...prev, [field]: "" }));
-      if (field === "email") {
-        validEmailCosmetic = /\S+@\S+\.\S+/.test(e.target.value);
-      }
     };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -48,8 +44,7 @@ export default function ForgotPassword() {
 
     const nextErrors: Record<string, string> = {};
 
-    if (!/\S+@\S+\.\S+/.test(form.email)) {
-      validEmailCosmetic = false;
+    if (mode === "request" && !/\S+@\S+\.\S+/.test(form.email)) {
       nextErrors.email = "Wprowadź poprawny adres email.";
     }
 
@@ -101,6 +96,9 @@ export default function ForgotPassword() {
     "&:hover": { transform: "translateY(-2px)" },
   };
 
+  const emailValid =
+    mode === "reset" ? true : /\S+@\S+\.\S+/.test(form.email);
+
   return (
     <Box
       sx={{
@@ -112,16 +110,6 @@ export default function ForgotPassword() {
         p: 2,
       }}
     >
-      <Box
-        component="form"
-        sx={{ "& > :not(style)": { m: 1, width: "25ch" } }}
-        noValidate
-        autoComplete="off"
-      >
-        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-        <TextField id="filled-basic" label="Filled" variant="filled" />
-        <TextField id="standard-basic" label="Standard" variant="standard" />
-      </Box>
       <Card
         elevation={8}
         sx={{
@@ -209,21 +197,27 @@ export default function ForgotPassword() {
             </Alert>
           )}
 
-          <Box component="form" onSubmit={handleSubmit} noValidate>
+          <Box component="form" onSubmit={handleSubmit} noValidate 
+          sx={{
+            transition: "opacity 0.3s ease",
+            opacity: loading ? 0.6 : 1,
+            transform: loading ? "scale(0.98)" : "scale(1)",
+          }}>
             <Stack spacing={2.5}>
-              <TextField
-                variant="standard"
-                label="Email"
-                type="email"
-                value={form.email}
-                onChange={handleChange("email")}
-                fullWidth
-                required
-                autoFocus={mode === "request"}
-                error={Boolean(errors.email)}
-                helperText={errors.email || undefined}
-              />
-
+              {mode === "request" && (
+                <TextField
+                  variant="standard"
+                  label="Email"
+                  type="email"
+                  value={form.email}
+                  onChange={handleChange("email")}
+                  fullWidth
+                  required
+                  autoFocus={mode === "request"}
+                  error={Boolean(errors.email)}
+                  helperText={errors.email || undefined}
+                />
+              )}
               {mode === "reset" && (
                 <>
                   <TextField
@@ -274,17 +268,19 @@ export default function ForgotPassword() {
                 type="submit"
                 variant="contained"
                 fullWidth
+                disabled={loading}
                 sx={{
                   ...btnSx,
                   mt: 2.5,
                   bgcolor:
-                    loading || !validEmailCosmetic ? "grey.400" : "primary.main",
-                  color:
-                    loading || !validEmailCosmetic ? "grey.600" : "common.white",
-                  "&:hover":
-                    loading || !validEmailCosmetic
-                      ? { bgcolor: "grey.400", transform: "none" }
-                      : { transform: "translateY(-2px)", bgcolor: "primary.main" },
+                    loading || !emailValid ? "grey.400" : "primary.main",
+                  color: loading || !emailValid ? "grey.600" : "common.white",
+                  "&:hover": loading || !emailValid
+                    ? { bgcolor: "grey.400", transform: "none" }
+                    : {
+                        transform: "translateY(-2px)",
+                        bgcolor: "primary.main",
+                      },
                 }}
               >
                 {loading
@@ -298,7 +294,8 @@ export default function ForgotPassword() {
                 variant="text"
                 fullWidth
                 onClick={() => {
-                  setMode(mode === "request" ? "reset" : "request");
+                  const nextMode = mode === "request" ? "reset" : "request";
+                  setMode(nextMode);
                   setMessage(null);
                   setErrors({});
                 }}
