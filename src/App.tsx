@@ -3,11 +3,13 @@ import { Box, Button } from "@mui/material";
 import React, { Suspense, lazy } from "react";
 import theme from "./styles/theme.ts";
 import ForgotPassword from "./comp/forgotPassword.tsx"; 
+import { useTranslation } from "react-i18next";
 
 // Lazy load heavy components for better performance
 // const MojWarsztat = lazy(() => import("./comp/mojWarsztat"));
 const Login = lazy(() => import("./comp/login.tsx"));
 // const Zlecenia = lazy(() => import("./comp/zlecenia.tsx"));
+
 // Simple loading fallback that matches the theme
 const LoadingFallback = () => (
   <Box
@@ -26,6 +28,7 @@ const LoadingFallback = () => (
 
 export default function App() {
   const [showWarsztat, setShowWarsztat] = React.useState(false);
+  const { t } = useTranslation(["appTSX"]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -56,14 +59,14 @@ export default function App() {
           },
         }}
       >
-        Przejdź do głównej treści
+        {t("PrzejdzDoGlownejTresci", "Przejdź do głównej treści")}
       </Box>
 
       <Button
         variant="contained"
         color="primary"
         onClick={() => setShowWarsztat(!showWarsztat)}
-        aria-label={`Przełącz widok na ${showWarsztat ? "Zlecenia" : "Warsztat"}`}
+        aria-label={t("PrzelaczWidok", `Przełącz widok na ${showWarsztat ? "Zlecenia" : "Warsztat"}`)}
         aria-pressed={showWarsztat}
         sx={{
           position: "fixed",
@@ -89,7 +92,7 @@ export default function App() {
           }
         }}
       >
-        Switch to {showWarsztat ? "Orders" : "Workshop"}
+        {t("PrzelaczWidok", `Przełącz widok na ${showWarsztat ? "Zlecenia" : "Warsztat"}`)}
       </Button>
 
       <Suspense fallback={<LoadingFallback />}>

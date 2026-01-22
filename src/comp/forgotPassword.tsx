@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Card,
@@ -16,6 +17,7 @@ import {
 import { Visibility, VisibilityOff, LockReset } from "@mui/icons-material";
 export default function ForgotPassword() {
   const theme = useTheme();
+  const { t } = useTranslation(["forgotPassword"]);
   const [mode, setMode] = useState<"request" | "reset">("request");
   const [form, setForm] = useState({
     email: "",
@@ -45,18 +47,18 @@ export default function ForgotPassword() {
     const nextErrors: Record<string, string> = {};
 
     if (mode === "request" && !/\S+@\S+\.\S+/.test(form.email)) {
-      nextErrors.email = "Wprowadź poprawny adres email.";
+    nextErrors.email = t("WprowadzPoprawnyEmail", "Wprowadź poprawny adres email.");
     }
 
     if (mode === "reset") {
       if (!form.code) {
-        nextErrors.code = "Wprowadź kod resetowania.";
+        nextErrors.code = t("WprowadzKodResetowania", "Wprowadź kod resetowania.");
       }
       if (form.password.length < 8) {
-        nextErrors.password = "Hasło musi mieć co najmniej 8 znaków.";
+        nextErrors.password = t("HasloMin8Znakow", "Hasło musi mieć co najmniej 8 znaków.");
       }
       if (form.password !== form.confirm) {
-        nextErrors.confirm = "Hasła nie są identyczne.";
+        nextErrors.confirm = t("HaslaNieSaIdentyczne", "Hasła nie są identyczne.");
       }
     }
 
@@ -72,15 +74,15 @@ export default function ForgotPassword() {
         type: "success",
         text:
           mode === "request"
-            ? "Jeśli konto istnieje, kod został wysłany na podany email."
-            : "Hasło zaktualizowane. Możesz się zalogować.",
+            ? t("KodWyslany", "Jeśli konto istnieje, kod został wysłany na podany email.")
+            : t("HasloZaktualizowane", "Hasło zaktualizowane. Możesz się zalogować."),
       });
       if (mode === "reset") {
         setForm({ email: "", code: "", password: "", confirm: "" });
         setTimeout(() => setMode("request"), 2000);
       }
     } catch {
-      setMessage({ type: "error", text: "Wystąpił błąd. Spróbuj ponownie." });
+      setMessage({ type: "error", text: t("BladSprobujPonownie", "Wystąpił błąd. Spróbuj ponownie.") });
     } finally {
       setLoading(false);
     }
@@ -163,7 +165,7 @@ export default function ForgotPassword() {
                 lineHeight: 1.2,
               }}
             >
-              {mode === "request" ? "Odzyskaj hasło" : "Ustaw nowe hasło"}
+              {mode === "request" ? t("OdzyskajHaslo", "Odzyskaj hasło") : t("UstawNoweHaslo", "Ustaw nowe hasło")}
             </Typography>
 
             <Typography
@@ -175,8 +177,8 @@ export default function ForgotPassword() {
               }}
             >
               {mode === "request"
-                ? "Wprowadź adres e-mail powiązany z kontem - wyślemy instrukcje i jednorazowy kod."
-                : "Wprowadź kod otrzymany e‑mailem oraz nowe, bezpieczne hasło."}
+                ? t("WprowadzEmailInstrukcjeKod", "Wprowadź adres e-mail powiązany z kontem - wyślemy instrukcje i jednorazowy kod.")
+                : t("WprowadzKodNoweHaslo", "Wprowadź kod otrzymany e‑mailem oraz nowe, bezpieczne hasło.")}
             </Typography>
           </Box>
         </Box>
@@ -221,23 +223,23 @@ export default function ForgotPassword() {
               {mode === "reset" && (
                 <>
                   <TextField
-                    label="Kod resetowania"
+                    label={t("KodResetowania", "Kod resetowania")}
                     value={form.code}
                     onChange={handleChange("code")}
                     fullWidth
                     required
                     error={Boolean(errors.code)}
-                    helperText={errors.code || "Kod otrzymany na email"}
+                    helperText={errors.code || t("KodOtrzymanyNaEmail", "Kod otrzymany na email")}
                   />
                   <TextField
-                    label="Nowe hasło"
+                    label={t("NoweHaslo", "Nowe hasło")}
                     type={showPwd ? "text" : "password"}
                     value={form.password}
                     onChange={handleChange("password")}
                     fullWidth
                     required
                     error={Boolean(errors.password)}
-                    helperText={errors.password || "Minimum 8 znaków"}
+                    helperText={errors.password || t("Minimum8Znakow", "Minimum 8 znaków")}
                     InputProps={{
                       endAdornment: (
                         <InputAdornment position="end">
@@ -252,7 +254,7 @@ export default function ForgotPassword() {
                     }}
                   />
                   <TextField
-                    label="Powtórz hasło"
+                    label={t("PowtorzHaslo", "Powtórz hasło")}
                     type={showPwd ? "text" : "password"}
                     value={form.confirm}
                     onChange={handleChange("confirm")}
@@ -284,10 +286,10 @@ export default function ForgotPassword() {
                 }}
               >
                 {loading
-                  ? "Ładowanie…"
+                  ? t("Ladowanie", "Ładowanie…")
                   : mode === "request"
-                    ? "Wyślij kod"
-                    : "Zmień hasło"}
+                    ? t("WyslijKod", "Wyślij kod")
+                    : t("ZmienHaslo", "Zmień hasło")}
               </Button>
 
               <Button
@@ -301,7 +303,7 @@ export default function ForgotPassword() {
                 }}
                 sx={{ textTransform: "none", mt: 1 }}
               >
-                {mode === "request" ? "Mam już kod" : "← Powrót"}
+                {mode === "request" ? t("MamJuzKod", "Mam już kod") : t("Powrot", "← Powrót")}
               </Button>
             </Stack>
           </Box>
@@ -322,7 +324,7 @@ export default function ForgotPassword() {
             color="text.secondary"
             sx={{ fontSize: { xs: "0.8rem", sm: "0.875rem" } }}
           >
-            Potrzebujesz pomocy?{" "}
+            {t("PotrzebujeszPomocy", "Potrzebujesz pomocy?")}{" "}
             <Link
               component="button"
               type="button"
@@ -361,7 +363,7 @@ export default function ForgotPassword() {
                 "&:hover:after": { width: "100%" },
               }}
             >
-              Kontakt
+              {t("Kontakt", "Kontakt")}
             </Link>
           </Typography>
         </Box>
