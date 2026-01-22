@@ -58,19 +58,21 @@ const Login = memo(function Login() {
                   component="div"
                   sx={{ m: 0, display: 'flex', alignItems: 'center', gap: 1 }}
                 >
-                    <Box
-                      component="img"
-                      src={carsylogo}
-                      alt="Carsy - logo systemu zarządzania warsztatem"
-                      loading="eager"
-                      decoding="async"
-                      sx={{
-                        height: { xs: 36, md: 64 },
-                        width: "auto",
-                        display: "block",
-                        flexShrink: 0,
-                      }}
-                    />
+                    <Link href="#" underline="none" sx={{ display: 'inline-flex', alignItems: 'center' }}>
+                      <Box
+                        component="img"
+                        src={carsylogo}
+                        alt="Carsy - logo systemu zarządzania warsztatem"
+                        loading="eager"
+                        decoding="async"
+                        sx={{
+                          height: { xs: 36, md: 64 },
+                          width: "auto",
+                          display: "block",
+                          flexShrink: 0,
+                        }}
+                      />
+                    </Link>
                 </Typography>
               </Box>
               <Box sx={{ display: "flex", flexDirection: "column", gap: 2.5 }}>

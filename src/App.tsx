@@ -2,12 +2,12 @@ import { ThemeProvider } from "@mui/material/styles";
 import { Box, Button } from "@mui/material";
 import React, { Suspense, lazy } from "react";
 import theme from "./styles/theme.ts";
-import ForgotPassword from "./comp/forgotPassword.tsx";
+// import ForgotPassword from "./comp/forgotPassword.tsx";
 
 // Lazy load heavy components for better performance
 // const MojWarsztat = lazy(() => import("./comp/mojWarsztat"));
 const Login = lazy(() => import("./comp/login.tsx"));
-
+const Zlecenia = lazy(() => import("./comp/zlecenia.tsx"));
 // Simple loading fallback that matches the theme
 const LoadingFallback = () => (
   <Box
@@ -117,7 +117,8 @@ export default function App() {
                   flexDirection: "column",
                 }}
               >
-                <ForgotPassword />
+                {/* <ForgotPassword /> */}
+                <Zlecenia />
               </Box>
             </Box>
           ) : (

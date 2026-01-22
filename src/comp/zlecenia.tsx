@@ -5,7 +5,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useMediaQuery } from "@mui/material";
 import {
   CssBaseline,
-  GlobalStyles,
+  // GlobalStyles,
   IconButton,
   TextField,
   Box,
@@ -568,7 +568,7 @@ export default function Zlecenia() {
         </Menu>
 
         {/* Global styles dla DataGrid */}
-        <GlobalStyles
+        {/* <GlobalStyles
           styles={{
             "*": {
               boxSizing: "border-box",
@@ -597,7 +597,7 @@ export default function Zlecenia() {
             },
           }}
         />
-
+ */}
         {/* Container */}
         <Box
           sx={{

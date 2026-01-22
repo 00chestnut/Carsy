@@ -17,7 +17,6 @@ import {
   Visibility,
   VisibilityOff,
   LockReset,
-  Email,
 } from "@mui/icons-material";
 
 export default function ForgotPassword() {
@@ -88,20 +87,6 @@ export default function ForgotPassword() {
     }
   };
 
-  const inputSx = {
-    "& .MuiOutlinedInput-root": {
-      borderRadius: 2,
-      height: 48,
-      display: "flex",
-      alignItems: "center",
-    },
-    "& .MuiInputBase-input": {
-      py: 0,
-    },
-    "& .MuiFormHelperText-root": {
-      mt: 0.5,
-    },
-  };
   const btnSx = {
     py: { xs: 1.25, sm: 1.5 },
     borderRadius: 2,
@@ -113,6 +98,7 @@ export default function ForgotPassword() {
   };
 
   return (
+    
     <Box
       sx={{
         minHeight: "100vh",
@@ -123,7 +109,24 @@ export default function ForgotPassword() {
         p: 2,
       }}
     >
-      <Card elevation={8} sx={{ width: { xs: "100%", sm: 500 }, maxWidth: 520, borderRadius: { xs: 2, sm: 3 } }}>
+    <Box
+      component="form"
+      sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
+      noValidate
+      autoComplete="off"
+    >
+      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+      <TextField id="filled-basic" label="Filled" variant="filled" />
+      <TextField id="standard-basic" label="Standard" variant="standard" />
+    </Box>
+      <Card
+        elevation={8}
+        sx={{
+          width: { xs: "100%", sm: 500 },
+          maxWidth: 520,
+          borderRadius: { xs: 2, sm: 3 },
+        }}
+      >
         <Box
           sx={{
             background: `linear-gradient(135deg, ${theme.palette.primary.main}, ${theme.palette.primary.dark})`,
@@ -164,14 +167,24 @@ export default function ForgotPassword() {
             <Typography
               variant="h5"
               fontWeight={700}
-              sx={{ fontSize: { xs: "1.25rem", sm: "1.5rem" }, lineHeight: 1.2 }}
+              sx={{
+                fontSize: { xs: "1.25rem", sm: "1.5rem" },
+                lineHeight: 1.2,
+              }}
             >
               {mode === "request" ? "Odzyskaj hasło" : "Ustaw nowe hasło"}
             </Typography>
 
-            <Typography variant="body2" sx={{ mt: 0.75, opacity: 0.95, fontSize: { xs: "0.8rem", sm: "0.875rem" } }}>
+            <Typography
+              variant="body2"
+              sx={{
+                mt: 0.75,
+                opacity: 0.95,
+                fontSize: { xs: "0.8rem", sm: "0.875rem" },
+              }}
+            >
               {mode === "request"
-                ? "Wprowadź adres e-mail powiązany z kontem — wyślemy instrukcje i jednorazowy kod."
+                ? "Wprowadź adres e-mail powiązany z kontem - wyślemy instrukcje i jednorazowy kod."
                 : "Wprowadź kod otrzymany e‑mailem oraz nowe, bezpieczne hasło."}
             </Typography>
           </Box>
@@ -179,9 +192,13 @@ export default function ForgotPassword() {
 
         <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
           {message && (
-            <Alert 
-              severity={message.type} 
-              sx={{ mb: 2.5, borderRadius: 2, fontSize: { xs: "0.875rem", sm: "1rem" } }}
+            <Alert
+              severity={message.type}
+              sx={{
+                mb: 2.5,
+                borderRadius: 2,
+                fontSize: { xs: "0.875rem", sm: "1rem" },
+              }}
               role="status"
               aria-live={message.type === "error" ? "assertive" : "polite"}
             >
@@ -199,55 +216,47 @@ export default function ForgotPassword() {
                 fullWidth
                 required
                 autoFocus={mode === "request"}
-                sx={inputSx}
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start" sx={{ mr: 1 }}>
-                      <Email color="action" fontSize="small" />
-                    </InputAdornment>
-                  ),
-                }}
               />
 
               {mode === "reset" && (
                 <>
-                    <TextField
-                        label="Kod resetowania"
-                        value={form.code}
-                        onChange={handleChange("code")}
-                        fullWidth
-                        required
-                        helperText="Kod otrzymany na email"
-                        sx={inputSx}
-                    />
-                    <TextField
-                        label="Nowe hasło"
-                        type={showPwd ? "text" : "password"}
-                        value={form.password}
-                        onChange={handleChange("password")}
-                        fullWidth
-                        required
-                        helperText="Minimum 8 znaków"
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end" sx={{ mr: -1 }}>
-                                    <IconButton onClick={() => setShowPwd(!showPwd)} edge="end" size="small">
-                                        {showPwd ? <VisibilityOff fontSize="small" /> : <Visibility fontSize="small" />}
-                                    </IconButton>
-                                </InputAdornment>
-                            ),
-                        }}
-                        sx={inputSx}
-                    />
-                    <TextField
-                        label="Potwierdź hasło"
-                        type={showPwd ? "text" : "password"}
-                        value={form.confirm}
-                        onChange={handleChange("confirm")}
-                        fullWidth
-                        required
-                        sx={inputSx}
-                    />
+                  <TextField
+                    label="Kod resetowania"
+                    value={form.code}
+                    onChange={handleChange("code")}
+                    fullWidth
+                    required
+                    helperText="Kod otrzymany na email"
+                  />
+                  <TextField
+                    label="Nowe hasło"
+                    type={showPwd ? "text" : "password"}
+                    value={form.password}
+                    onChange={handleChange("password")}
+                    fullWidth
+                    required
+                    helperText="Minimum 8 znaków"
+                    InputProps={{
+                      endAdornment: (
+                        <InputAdornment position="end">
+                          <IconButton
+                            onClick={() => setShowPwd(!showPwd)}
+                            edge="end"
+                          >
+                            {showPwd ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      ),
+                    }}
+                  />
+                  <TextField
+                    label="Potwierdź hasło"
+                    type={showPwd ? "text" : "password"}
+                    value={form.confirm}
+                    onChange={handleChange("confirm")}
+                    fullWidth
+                    required
+                  />
                 </>
               )}
 
@@ -290,7 +299,11 @@ export default function ForgotPassword() {
             textAlign: "center",
           }}
         >
-          <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: "0.8rem", sm: "0.875rem" } }}>
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            sx={{ fontSize: { xs: "0.8rem", sm: "0.875rem" } }}
+          >
             Potrzebujesz pomocy?{" "}
             <Link
               component="button"

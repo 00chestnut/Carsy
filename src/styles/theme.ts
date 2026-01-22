@@ -98,19 +98,6 @@ const theme = createTheme({
               backgroundColor: '#eef6f0',
             },
           },
-          '& .MuiOutlinedInput-input': {
-            boxSizing: 'border-box',
-            padding: '10px 14px',
-            lineHeight: '22px',
-            transform: 'translateY(-1px)',
-            '@media (max-width:390px)': {
-              fontSize: '10px',
-            },
-          },
-          '& .MuiInputLabel-root:not(.MuiInputLabel-shrink)': {
-            transform: 'translate(14px, 10px) scale(1)',
-            lineHeight: '22px',
-          },
           '& .MuiInputLabel-root.Mui-focused': {
             color: '#2e7d32',
           },
