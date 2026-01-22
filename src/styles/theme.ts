@@ -1,4 +1,13 @@
-import { createTheme } from '@mui/material/styles';
+import { createTheme, type PaletteColorOptions } from '@mui/material/styles';
+
+declare module '@mui/material/styles' {
+  interface Palette {
+    unavailable: Palette['primary'];
+  }
+  interface PaletteOptions {
+    unavailable?: PaletteColorOptions;
+  }
+}
 
 // --- Elevation levels ---
 const elevations = {
@@ -32,6 +41,9 @@ const theme = createTheme({
     /* dimmed, slightly grayish green for secondary actions */
     secondary: {
       main: '#629e62',
+    },
+    unavailable: {
+      main: '#629e62de',
     },
     success: {
       main: '#4caf50',

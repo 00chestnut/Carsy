@@ -13,12 +13,8 @@ import {
   Stack,
   useTheme,
 } from "@mui/material";
-import {
-  Visibility,
-  VisibilityOff,
-  LockReset,
-} from "@mui/icons-material";
-
+import { Visibility, VisibilityOff, LockReset } from "@mui/icons-material";
+var validEmailCosmetic = true;
 export default function ForgotPassword() {
   const theme = useTheme();
   const [mode, setMode] = useState<"request" | "reset">("request");
@@ -40,6 +36,9 @@ export default function ForgotPassword() {
     (field: string) => (e: React.ChangeEvent<HTMLInputElement>) => {
       setForm({ ...form, [field]: e.target.value });
       setErrors((prev) => ({ ...prev, [field]: "" }));
+      if (field === "email") {
+        validEmailCosmetic = /\S+@\S+\.\S+/.test(e.target.value);
+      }
     };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -50,6 +49,7 @@ export default function ForgotPassword() {
     const nextErrors: Record<string, string> = {};
 
     if (!/\S+@\S+\.\S+/.test(form.email)) {
+      validEmailCosmetic = false;
       nextErrors.email = "Wprowadź poprawny adres email.";
     }
 
@@ -102,7 +102,6 @@ export default function ForgotPassword() {
   };
 
   return (
-    
     <Box
       sx={{
         minHeight: "100vh",
@@ -113,16 +112,16 @@ export default function ForgotPassword() {
         p: 2,
       }}
     >
-    <Box
-      component="form"
-      sx={{ '& > :not(style)': { m: 1, width: '25ch' } }}
-      noValidate
-      autoComplete="off"
-    >
-      <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-      <TextField id="filled-basic" label="Filled" variant="filled" />
-      <TextField id="standard-basic" label="Standard" variant="standard" />
-    </Box>
+      <Box
+        component="form"
+        sx={{ "& > :not(style)": { m: 1, width: "25ch" } }}
+        noValidate
+        autoComplete="off"
+      >
+        <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+        <TextField id="filled-basic" label="Filled" variant="filled" />
+        <TextField id="standard-basic" label="Standard" variant="standard" />
+      </Box>
       <Card
         elevation={8}
         sx={{
@@ -259,7 +258,7 @@ export default function ForgotPassword() {
                     }}
                   />
                   <TextField
-                    label="Potwierdź hasło"
+                    label="Powtórz hasło"
                     type={showPwd ? "text" : "password"}
                     value={form.confirm}
                     onChange={handleChange("confirm")}
@@ -270,13 +269,23 @@ export default function ForgotPassword() {
                   />
                 </>
               )}
-
+              {/* ten button jest istotny */}
               <Button
                 type="submit"
                 variant="contained"
                 fullWidth
-                disabled={loading}
-                sx={btnSx}
+                sx={{
+                  ...btnSx,
+                  mt: 2.5,
+                  bgcolor:
+                    loading || !validEmailCosmetic ? "grey.400" : "primary.main",
+                  color:
+                    loading || !validEmailCosmetic ? "grey.600" : "common.white",
+                  "&:hover":
+                    loading || !validEmailCosmetic
+                      ? { bgcolor: "grey.400", transform: "none" }
+                      : { transform: "translateY(-2px)", bgcolor: "primary.main" },
+                }}
               >
                 {loading
                   ? "Ładowanie…"
