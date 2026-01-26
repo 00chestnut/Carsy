@@ -70,7 +70,7 @@ const theme = createTheme({
     MuiButton: {
       styleOverrides: {
         root: {
-          fontFamily: 'inherit',
+          fontFamily: 'Montserrat, sans-serif',
           fontWeight: 600,
           textTransform: 'none',
         },

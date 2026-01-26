@@ -422,7 +422,7 @@ export default function Zlecenia() {
       },
       {
         field: "call",
-        headerName: t("zadzwoń", "Zadzwoń"),
+        headerName: t("zadzwon", "Zadzwoń"),
         width: isTablet ? 64 : 80,
         sortable: false,
         filterable: false,

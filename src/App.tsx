@@ -7,7 +7,8 @@ import { useTranslation } from "react-i18next";
 
 // Lazy load heavy components for better performance
 // const MojWarsztat = lazy(() => import("./comp/mojWarsztat"));
-const Login = lazy(() => import("./comp/login.tsx"));
+// const Login = lazy(() => import("./comp/login.tsx")); 
+const LandingPage = lazy(() => import("./comp/LandingPage.tsx"));
 // const Zlecenia = lazy(() => import("./comp/zlecenia.tsx"));
 
 // Simple loading fallback that matches the theme
@@ -125,7 +126,7 @@ export default function App() {
               </Box>
             </Box>
           ) : (
-            <Login /> // Sign-in form
+            <LandingPage /> // New landing page
           )}
         </Box>
       </Suspense>
