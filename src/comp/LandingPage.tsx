@@ -223,12 +223,14 @@ const LandingPage = memo(function LandingPage() {
             }}
           >
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-              <Box
-                component="img"
-                src={carsylogo}
-                alt="Carsy logo"
-                sx={{ height: { xs: 36, md: 48 } }}
-              />
+              <a href="/">
+                <Box
+                  component="img"
+                  src={carsylogo}
+                  alt="Carsy logo"
+                  sx={{ height: { xs: 36, md: 48 } }}
+                />
+              </a>
             </Box>
             <Stack direction="row" spacing={2}>
               <Button
@@ -263,7 +265,7 @@ const LandingPage = memo(function LandingPage() {
                   }}
                 >
                   {/* TODO: Nav CTA text */}
-                  {t("ctaTEXT", "Zarejestruj się")}
+                  {t("zalozKonto", "Załóż konto")}
                 </Button>
               )}
             </Stack>
@@ -395,29 +397,6 @@ const LandingPage = memo(function LandingPage() {
                       "Rozpocznij darmowy okres próbny",
                     )}
                   </Button>
-                  <Button
-                    variant="outlined"
-                    size="large"
-                    sx={{
-                      borderRadius: 999,
-                      px: 4,
-                      py: 1.5,
-                      fontSize: "1.1rem",
-                      fontWeight: 600,
-                      borderColor: alpha(theme.palette.text.primary, 0.2),
-                      color: "text.primary",
-                      "&:hover": {
-                        borderColor: "primary.main",
-                        backgroundColor: alpha(
-                          theme.palette.primary.main,
-                          0.04,
-                        ),
-                      },
-                    }}
-                  >
-                    {/* TODO: Secondary CTA */}
-                    {t("zobaczDemo", "Demo")}
-                  </Button>
                 </Stack>
                 <Typography variant="body2" color="text.secondary">
                   {/* TODO: Trust signals */}
@@ -520,7 +499,7 @@ const LandingPage = memo(function LandingPage() {
                           color: "primary.main",
                         }}
                       >
-                        Zlecenia
+                        Zlecenia (Placeholder)
                       </Typography>
                     </Box>
 
@@ -624,16 +603,16 @@ const LandingPage = memo(function LandingPage() {
                     {/* DataGrid Rows */}
                     {[
                       {
-                        reg: "KR 9M23A",
-                        vehicle: "Volkswagen Golf VII",
+                        reg: "SCI WW75",
+                        vehicle: "Ferrari 812 Competizione",
                         status: "Zaplanowane",
                         statusColor: "warning",
                         client: "Adam Nowak",
                         online: true,
                       },
                       {
-                        reg: "GD 4L7Q2",
-                        vehicle: "BMW 3 Series",
+                        reg: "SB 4JX22",
+                        vehicle: "BMW M4 G82 Competition",
                         status: "W trakcie",
                         statusColor: "info",
                         client: "Piotr Wiśniewski",
@@ -641,15 +620,23 @@ const LandingPage = memo(function LandingPage() {
                       },
                       {
                         reg: "PO 8XK91",
-                        vehicle: "Ford Focus",
+                        vehicle: "Lotus Exige Sport 410",
                         status: "Gotowe do wydania",
                         statusColor: "success",
                         client: "Anna Kaczmarek",
                         online: true,
                       },
                       {
+                        reg: "SCI KR25F",
+                        vehicle: "Porsche 911 GT3 RS 992.2",
+                        status: "Gotowe do wydania",
+                        statusColor: "success",
+                        client: "Milena Witoszek",
+                        online: true,
+                      },
+                      {
                         reg: "WX 2R5T8",
-                        vehicle: "Toyota Corolla",
+                        vehicle: "Volkswagen Passat B5",
                         status: "Odebrane",
                         statusColor: "default",
                         client: "Marcin Zieliński",
@@ -820,7 +807,7 @@ const LandingPage = memo(function LandingPage() {
                       <Typography
                         sx={{ fontSize: "0.65rem", color: "text.secondary" }}
                       >
-                        Wiersze na stronę: 10
+                        {t("WierszeNaStrone","Wiersze na stronę: 5")}
                       </Typography>
                       <Box
                         sx={{ display: "flex", alignItems: "center", gap: 1 }}
@@ -828,7 +815,7 @@ const LandingPage = memo(function LandingPage() {
                         <Typography
                           sx={{ fontSize: "0.65rem", color: "text.secondary" }}
                         >
-                          1–4 z 15
+                          {t("1-5z15","1–5 z 15")}
                         </Typography>
                         <Box sx={{ display: "flex", gap: 0.25 }}>
                           <Box
@@ -1136,26 +1123,6 @@ const LandingPage = memo(function LandingPage() {
                 "rozpocznijDarmowyOkresProby",
                 "Rozpocznij darmowy okres próby",
               )}
-            </Button>
-            <Button
-              variant="outlined"
-              size="large"
-              sx={{
-                borderRadius: 999,
-                px: 5,
-                py: 1.5,
-                fontSize: "1.1rem",
-                fontWeight: 600,
-                borderColor: "white",
-                color: "white",
-                "&:hover": {
-                  borderColor: "white",
-                  bgcolor: alpha("#fff", 0.1),
-                },
-              }}
-            >
-              {/* TODO: CTA secondary button */}
-              {t("zobaczDemo", "Demo")}
             </Button>
           </Stack>
         </Container>

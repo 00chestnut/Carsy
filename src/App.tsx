@@ -70,6 +70,7 @@ export default function App() {
         aria-label={t("PrzelaczWidok", `Przełącz widok na ${showWarsztat ? "Zlecenia" : "Warsztat"}`)}
         aria-pressed={showWarsztat}
         sx={{
+          bgcolor: "#002fff81",
           position: "fixed",
           top: 16,
           right: 16,
