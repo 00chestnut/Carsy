@@ -105,8 +105,8 @@ const Login = memo(function Login() {
               ml: { xs: -3, md: -12 }, // always touches left edge
               px: { xs: 3, md: 6 },
               py: 3,
-              bgcolor: "background.paper",
-              boxShadow: theme.shadows[4],
+              // bgcolor: "background.paper",
+              // boxShadow: theme.shadows[4],
               position: "relative",
               zIndex: 10,
               transform: { xs: "none", md: "translateY(-18px)" },
