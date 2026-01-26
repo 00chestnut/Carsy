@@ -19,48 +19,90 @@ import { useTranslation } from "react-i18next";
 
 // Icons as simple components
 const CalendarIcon = () => (
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-    <line x1="16" y1="2" x2="16" y2="6"/>
-    <line x1="8" y1="2" x2="8" y2="6"/>
-    <line x1="3" y1="10" x2="21" y2="10"/>
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+    <line x1="16" y1="2" x2="16" y2="6" />
+    <line x1="8" y1="2" x2="8" y2="6" />
+    <line x1="3" y1="10" x2="21" y2="10" />
   </svg>
 );
 
 const UsersIcon = () => (
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-    <circle cx="9" cy="7" r="4"/>
-    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+    <circle cx="9" cy="7" r="4" />
+    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
   </svg>
 );
 
 const ClockIcon = () => (
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <circle cx="12" cy="12" r="10"/>
-    <polyline points="12 6 12 12 16 14"/>
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12 6 12 12 16 14" />
   </svg>
 );
 
 const ChartIcon = () => (
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <line x1="18" y1="20" x2="18" y2="10"/>
-    <line x1="12" y1="20" x2="12" y2="4"/>
-    <line x1="6" y1="20" x2="6" y2="14"/>
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <line x1="18" y1="20" x2="18" y2="10" />
+    <line x1="12" y1="20" x2="12" y2="4" />
+    <line x1="6" y1="20" x2="6" y2="14" />
   </svg>
 );
 
 const WrenchIcon = () => (
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
   </svg>
 );
 
 const PhoneIcon = () => (
-  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/>
-    <line x1="12" y1="18" x2="12.01" y2="18"/>
+  <svg
+    width="40"
+    height="40"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+  >
+    <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+    <line x1="12" y1="18" x2="12.01" y2="18" />
   </svg>
 );
 
@@ -68,32 +110,33 @@ const features = [
   {
     icon: CalendarIcon,
     title: "Feature One",
-    description: "Describe the first key feature of your product here. What problem does it solve?",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     icon: UsersIcon,
     title: "Feature Two",
-    description: "Describe the second key feature. How does it help your users?",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     icon: ClockIcon,
     title: "Feature Three",
-    description: "Describe the third feature. What makes it valuable?",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     icon: ChartIcon,
     title: "Feature Four",
-    description: "Describe the fourth feature. Include specific benefits.",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     icon: WrenchIcon,
     title: "Feature Five",
-    description: "Describe the fifth feature. Be specific and compelling.",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
     icon: PhoneIcon,
     title: "Feature Six",
-    description: "Describe the sixth feature. End with a strong point.",
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
 ];
 
@@ -102,7 +145,8 @@ const testimonials = [
     name: "Customer Name",
     role: "Role, Company",
     avatar: "C",
-    content: "Add a testimonial quote here. What did this customer love about your product?",
+    content:
+      "Add a testimonial quote here. What did this customer love about your product?",
   },
   {
     name: "Customer Name",
@@ -209,7 +253,10 @@ const LandingPage = memo(function LandingPage() {
                   }}
                 >
                   {/* TODO: Nav CTA text */}
-                  Primary CTA
+                  {t(
+                    "ctaTEXT",
+                    "Zarejestruj się",
+                  )}
                 </Button>
               )}
             </Stack>
@@ -259,7 +306,7 @@ const LandingPage = memo(function LandingPage() {
               <Grid size={{ xs: 12, md: 6 }}>
                 <Box>
                   <Chip
-                    label="{/* TODO: Badge text e.g. ✨ New version available */}"
+                    label={t("badgeText", "✨ New version available")}
                     sx={{
                       mb: 3,
                       bgcolor: alpha(theme.palette.primary.main, 0.1),
@@ -282,7 +329,10 @@ const LandingPage = memo(function LandingPage() {
                     }}
                   >
                     {/* TODO: Main headline */}
-                    Your Main Headline Here
+                    {t(
+                      "mainHeadline",
+                      "Carsy - Cyfrowy grafik który szanuje twój czas",
+                    )}
                   </Typography>
                   <Typography
                     variant="h6"
@@ -295,9 +345,16 @@ const LandingPage = memo(function LandingPage() {
                     }}
                   >
                     {/* TODO: Subheadline - describe your value proposition */}
-                    A brief description of what your product does and why it matters to your target audience.
+                    {t(
+                      "subHeadline",
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod...",
+                    )}
                   </Typography>
-                  <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ mb: 4 }}>
+                  <Stack
+                    direction={{ xs: "column", sm: "row" }}
+                    spacing={2}
+                    sx={{ mb: 4 }}
+                  >
                     <Button
                       variant="contained"
                       size="large"
@@ -316,7 +373,10 @@ const LandingPage = memo(function LandingPage() {
                       }}
                     >
                       {/* TODO: Primary CTA */}
-                      Get Started Free →
+                      {t(
+                        "rozpocznijDarmowyOkresProbny",
+                        "Rozpocznij darmowy okres próbny",
+                      )}
                     </Button>
                     <Button
                       variant="outlined"
@@ -331,17 +391,20 @@ const LandingPage = memo(function LandingPage() {
                         color: "text.primary",
                         "&:hover": {
                           borderColor: "primary.main",
-                          backgroundColor: alpha(theme.palette.primary.main, 0.04),
+                          backgroundColor: alpha(
+                            theme.palette.primary.main,
+                            0.04,
+                          ),
                         },
                       }}
                     >
                       {/* TODO: Secondary CTA */}
-                      See Demo
+                      {t("zobaczDemo", "Demo")}
                     </Button>
                   </Stack>
                   <Typography variant="body2" color="text.secondary">
                     {/* TODO: Trust signals */}
-                    ✓ Free trial &nbsp; ✓ No credit card &nbsp; ✓ Cancel anytime
+                    {t("darmowyOkresProbny", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.")}
                   </Typography>
                 </Box>
               </Grid>
@@ -355,102 +418,259 @@ const LandingPage = memo(function LandingPage() {
                       perspective: "1000px",
                     }}
                   >
-                    <Box
+                    <Card
                       sx={{
-                        bgcolor: "background.paper",
-                        borderRadius: 4,
-                        boxShadow: `0 25px 50px -12px ${alpha("#000", 0.25)}`,
+                        borderRadius: "8px",
                         overflow: "hidden",
-                        transform: isMobile ? "none" : "rotateY(-5deg) rotateX(5deg)",
+                        boxShadow: `0 25px 50px -12px ${alpha("#000", 0.25)}`,
+                        transform: isMobile
+                          ? "none"
+                          : "rotateY(-5deg) rotateX(5deg)",
                         transition: "transform 0.3s ease",
                         "&:hover": {
                           transform: "rotateY(0) rotateX(0)",
                         },
+                        border: `1px solid ${theme.palette.divider}`,
+                        bgcolor: "#eef6f0",
                       }}
                     >
-                      {/* Mock app header */}
+                      {/* APP HEADER - matches zlecenia.tsx */}
                       <Box
                         sx={{
-                          bgcolor: "primary.main",
-                          px: 3,
-                          py: 2,
+                          px: 2,
+                          py: 1.5,
                           display: "flex",
                           alignItems: "center",
-                          gap: 1,
+                          justifyContent: "space-between",
+                          backgroundColor: theme.palette.background.paper,
+                          borderRadius: "8px 8px 0 0",
+                          boxShadow: "0 4px 12px rgba(0,0,0,0.12)",
                         }}
                       >
-                        <Box sx={{ display: "flex", gap: 0.75 }}>
-                          <Box sx={{ width: 12, height: 12, borderRadius: "50%", bgcolor: "#ff5f57" }} />
-                          <Box sx={{ width: 12, height: 12, borderRadius: "50%", bgcolor: "#ffbd2e" }} />
-                          <Box sx={{ width: 12, height: 12, borderRadius: "50%", bgcolor: "#28c840" }} />
+                        {/* Left: burger + title */}
+                        <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                          <Box sx={{ color: "primary.main", display: "flex", alignItems: "center" }}>
+                            <svg width={18} height={18} viewBox="0 0 24 24" fill="none">
+                              <rect x={3} y={6} width={18} height={2} rx={1} fill={theme.palette.primary.main} />
+                              <rect x={3} y={11} width={18} height={2} rx={1} fill={theme.palette.primary.main} />
+                              <rect x={3} y={16} width={18} height={2} rx={1} fill={theme.palette.primary.main} />
+                            </svg>
+                          </Box>
+                          <Typography sx={{ fontSize: 22, fontWeight: 700, color: "primary.main" }}>
+                            Zlecenia
+                          </Typography>
                         </Box>
-                        <Typography variant="body2" sx={{ color: "white", ml: 2, fontWeight: 600 }}>
-                          {/* TODO: App name */}
-                          Your App Name
-                        </Typography>
+
+                        {/* Right: search + settings */}
+                        <Box sx={{ display: "flex", alignItems: "center", gap: 0.75 }}>
+                          <Box
+                            sx={{
+                              width: 32,
+                              height: 32,
+                              borderRadius: 1,
+                              bgcolor: "#f4faf6",
+                              border: `1px solid ${theme.palette.divider}`,
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={theme.palette.primary.main} strokeWidth="2">
+                              <circle cx="11" cy="11" r="8" />
+                              <path d="m21 21-4.35-4.35" />
+                            </svg>
+                          </Box>
+                          <Box
+                            sx={{
+                              width: 32,
+                              height: 32,
+                              borderRadius: 1,
+                              bgcolor: "#f4faf6",
+                              border: `1px solid ${theme.palette.divider}`,
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={theme.palette.primary.main} strokeWidth="2">
+                              <circle cx="12" cy="12" r="3" />
+                              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+                            </svg>
+                          </Box>
+                        </Box>
                       </Box>
-                      {/* Mock calendar content */}
-                      <Box sx={{ p: 3 }}>
-                        <Grid container spacing={1}>
-                          {["Pon", "Wto", "Śro", "Czw", "Pią"].map((day) => (
-                            <Grid size={2.4} key={day}>
-                              <Typography
-                                variant="caption"
-                                sx={{
-                                  display: "block",
-                                  textAlign: "center",
-                                  fontWeight: 600,
-                                  color: "text.secondary",
-                                  mb: 1,
-                                }}
-                              >
-                                {day}
-                              </Typography>
-                            </Grid>
+
+                      {/* Header divider */}
+                      <Box sx={{ height: 4, backgroundColor: theme.palette.divider }} />
+
+                      {/* Main content card */}
+                      <CardContent
+                        sx={{
+                          p: 0,
+                          bgcolor: theme.palette.background.paper,
+                          "&:last-child": { pb: 0 },
+                        }}
+                      >
+                        {/* DataGrid Header Row */}
+                        <Box
+                          sx={{
+                            display: "grid",
+                            gridTemplateColumns: "0.5fr 1.2fr 1.6fr 1fr 1.4fr 0.8fr",
+                            gap: 1,
+                            px: 1.5,
+                            py: 1,
+                            bgcolor: theme.palette.background.paper,
+                            borderBottom: `1px solid ${theme.palette.divider}`,
+                          }}
+                        >
+                          {["", "Nr rej.", "Pojazd", "Status", "Klient", ""].map((header, idx) => (
+                            <Typography
+                              key={idx}
+                              sx={{ fontSize: "0.7rem", fontWeight: 600, color: "text.secondary" }}
+                            >
+                              {header}
+                            </Typography>
                           ))}
-                        </Grid>
-                        <Grid container spacing={1} sx={{ mt: 1 }}>
-                          {[...Array(10)].map((_, i) => (
-                            <Grid size={2.4} key={i}>
+                        </Box>
+
+                        {/* DataGrid Rows */}
+                        {[
+                          { reg: "KR 9M23A", vehicle: "Volkswagen Golf VII", status: "Zaplanowane", statusColor: "warning", client: "Adam Nowak", online: true },
+                          { reg: "GD 4L7Q2", vehicle: "BMW 3 Series", status: "W trakcie", statusColor: "info", client: "Piotr Wiśniewski", online: false },
+                          { reg: "PO 8XK91", vehicle: "Ford Focus", status: "Gotowe do wydania", statusColor: "success", client: "Anna Kaczmarek", online: true },
+                          { reg: "WX 2R5T8", vehicle: "Toyota Corolla", status: "Odebrane", statusColor: "default", client: "Marcin Zieliński", online: false },
+                        ].map((row, i) => (
+                          <Box
+                            key={i}
+                            sx={{
+                              display: "grid",
+                              gridTemplateColumns: "0.5fr 1.2fr 1.6fr 1fr 1.4fr 0.8fr",
+                              gap: 1,
+                              px: 1.5,
+                              py: 1,
+                              alignItems: "center",
+                              borderBottom: `1px solid ${alpha(theme.palette.divider, 0.5)}`,
+                              bgcolor: theme.palette.background.paper,
+                              "&:hover": { bgcolor: alpha(theme.palette.primary.main, 0.02) },
+                            }}
+                          >
+                            {/* 3-dot menu */}
+                            <Box sx={{ display: "flex", alignItems: "center" }}>
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill={theme.palette.text.secondary}>
+                                <circle cx="12" cy="5" r="2" />
+                                <circle cx="12" cy="12" r="2" />
+                                <circle cx="12" cy="19" r="2" />
+                              </svg>
+                            </Box>
+                            
+                            {/* Registration */}
+                            <Typography sx={{ fontSize: "0.75rem", fontWeight: 500, color: "text.secondary" }}>
+                              {row.reg}
+                            </Typography>
+                            
+                            {/* Vehicle */}
+                            <Typography sx={{ fontSize: "0.75rem", color: "text.secondary" }}>
+                              {row.vehicle}
+                            </Typography>
+                            
+                            {/* Status Chip */}
+                            <Chip
+                              size="small"
+                              label={row.status}
+                              color={row.statusColor as any}
+                              variant="outlined"
+                              sx={{ 
+                                height: 22, 
+                                fontSize: "0.6rem",
+                                borderWidth: 2,
+                                "& .MuiChip-label": { px: 0.75 },
+                              }}
+                            />
+                            
+                            {/* Client with online dot */}
+                            <Box sx={{ display: "flex", alignItems: "center", gap: 0.75 }}>
                               <Box
                                 sx={{
-                                  height: 60,
+                                  width: 8,
+                                  height: 8,
+                                  borderRadius: "50%",
+                                  bgcolor: row.online ? "success.main" : "grey.400",
+                                }}
+                              />
+                              <Typography sx={{ fontSize: "0.75rem", color: "text.secondary" }}>
+                                {row.client}
+                              </Typography>
+                            </Box>
+                            
+                            {/* Action buttons */}
+                            <Box sx={{ display: "flex", gap: 0.5 }}>
+                              <Box
+                                sx={{
+                                  width: 26,
+                                  height: 26,
                                   borderRadius: 1,
-                                  bgcolor: i % 3 === 0 
-                                    ? alpha(theme.palette.primary.main, 0.15)
-                                    : i % 3 === 1
-                                    ? alpha(theme.palette.warning.main, 0.15)
-                                    : alpha(theme.palette.success.main, 0.15),
-                                  border: `1px solid ${
-                                    i % 3 === 0 
-                                      ? alpha(theme.palette.primary.main, 0.3)
-                                      : i % 3 === 1
-                                      ? alpha(theme.palette.warning.main, 0.3)
-                                      : alpha(theme.palette.success.main, 0.3)
-                                  }`,
-                                  p: 0.5,
+                                  bgcolor: "#f4faf6",
+                                  border: `1px solid ${theme.palette.divider}`,
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
                                 }}
                               >
-                                <Typography
-                                  variant="caption"
-                                  sx={{
-                                    fontSize: "0.65rem",
-                                    fontWeight: 600,
-                                    color: i % 3 === 0 
-                                      ? "primary.main"
-                                      : i % 3 === 1
-                                      ? "warning.dark"
-                                      : "success.dark",
-                                  }}
-                                >
-                                  {i % 3 === 0 ? "Wymiana oleju" : i % 3 === 1 ? "Przegląd" : "Hamulce"}
-                                </Typography>
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={row.online ? theme.palette.success.main : theme.palette.grey[400]} strokeWidth="2">
+                                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
                               </Box>
-                            </Grid>
-                          ))}
-                        </Grid>
-                      </Box>
-                    </Box>
+                              <Box
+                                sx={{
+                                  width: 26,
+                                  height: 26,
+                                  borderRadius: 1,
+                                  bgcolor: "#f4faf6",
+                                  border: `1px solid ${theme.palette.divider}`,
+                                  display: "flex",
+                                  alignItems: "center",
+                                  justifyContent: "center",
+                                }}
+                              >
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke={row.online ? theme.palette.success.main : theme.palette.grey[400]} strokeWidth="2">
+                                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                                </svg>
+                              </Box>
+                            </Box>
+                          </Box>
+                        ))}
+
+                        {/* Pagination footer */}
+                        <Box
+                          sx={{
+                            px: 1.5,
+                            py: 1,
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "space-between",
+                            borderTop: `1px solid ${theme.palette.divider}`,
+                            bgcolor: theme.palette.background.paper,
+                          }}
+                        >
+                          <Typography sx={{ fontSize: "0.65rem", color: "text.secondary" }}>
+                            Wiersze na stronę: 10
+                          </Typography>
+                          <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                            <Typography sx={{ fontSize: "0.65rem", color: "text.secondary" }}>
+                              1–4 z 15
+                            </Typography>
+                            <Box sx={{ display: "flex", gap: 0.25 }}>
+                              <Box sx={{ width: 20, height: 20, borderRadius: 0.5, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                <Typography sx={{ fontSize: 10, color: "text.disabled" }}>{"<"}</Typography>
+                              </Box>
+                              <Box sx={{ width: 20, height: 20, borderRadius: 0.5, display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                <Typography sx={{ fontSize: 10, color: "text.secondary" }}>{">"}</Typography>
+                              </Box>
+                            </Box>
+                          </Box>
+                        </Box>
+                      </CardContent>
+                    </Card>
                   </Box>
                 </Fade>
               </Grid>
@@ -476,7 +696,11 @@ const LandingPage = memo(function LandingPage() {
                   >
                     {stat.value}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" fontWeight={500}>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    fontWeight={500}
+                  >
                     {stat.label}
                   </Typography>
                 </Box>
@@ -499,7 +723,10 @@ const LandingPage = memo(function LandingPage() {
               }}
             >
               {/* TODO: Features section heading */}
-              Everything You Need
+              {t(
+                "featuresSectionHeading",
+                "Wszystko czego potrzebujesz w jednym miejscu",
+              )}
             </Typography>
             <Typography
               variant="h6"
@@ -507,7 +734,10 @@ const LandingPage = memo(function LandingPage() {
               sx={{ maxWidth: 600, mx: "auto", fontWeight: 400 }}
             >
               {/* TODO: Features section subheading */}
-              A comprehensive tool built for your needs
+              {t(
+                "featuresSectionSubheading",
+                "Inteligentne narzędzia zbudowane na miarę twoich potrzeb",
+              )}
             </Typography>
           </Box>
 
@@ -548,7 +778,11 @@ const LandingPage = memo(function LandingPage() {
                     <Typography variant="h6" fontWeight={600} sx={{ mb: 1 }}>
                       {feature.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" lineHeight={1.7}>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      lineHeight={1.7}
+                    >
                       {feature.description}
                     </Typography>
                   </CardContent>
@@ -577,7 +811,7 @@ const LandingPage = memo(function LandingPage() {
               }}
             >
               {/* TODO: Testimonials heading */}
-              What Our Users Say
+              {t("testimonialsHeading", "Co mówią nasi użytkownicy")}
             </Typography>
             <Typography
               variant="h6"
@@ -585,7 +819,10 @@ const LandingPage = memo(function LandingPage() {
               sx={{ maxWidth: 600, mx: "auto", fontWeight: 400 }}
             >
               {/* TODO: Testimonials subheading */}
-              Join hundreds of happy customers
+              {t(
+                "testimonialsSubheading",
+                "Dołącz do setek zadowolonych klientów",
+              )}
             </Typography>
           </Box>
 
@@ -658,7 +895,7 @@ const LandingPage = memo(function LandingPage() {
             }}
           >
             {/* TODO: CTA headline */}
-            Ready to Get Started?
+            {t("ctaHeadline", "Gotowy rozpocząć?")}
           </Typography>
           <Typography
             variant="h6"
@@ -671,7 +908,10 @@ const LandingPage = memo(function LandingPage() {
             }}
           >
             {/* TODO: CTA subtext */}
-            Start today and see how much you can achieve. Free trial included.
+            {t(
+              "startToday",
+              "Rozpocznij już dziś i zobacz, ile możesz osiągnąć.",
+            )}
           </Typography>
           <Stack
             direction={{ xs: "column", sm: "row" }}
@@ -697,7 +937,10 @@ const LandingPage = memo(function LandingPage() {
               }}
             >
               {/* TODO: CTA primary button */}
-              Create Free Account
+              {t(
+                "rozpocznijDarmowyOkresProby",
+                "Rozpocznij darmowy okres próby",
+              )}
             </Button>
             <Button
               variant="outlined"
@@ -717,7 +960,7 @@ const LandingPage = memo(function LandingPage() {
               }}
             >
               {/* TODO: CTA secondary button */}
-              Schedule Demo
+              {t("zobaczDemo", "Demo")}
             </Button>
           </Stack>
         </Container>
@@ -735,7 +978,9 @@ const LandingPage = memo(function LandingPage() {
         <Container maxWidth="lg">
           <Grid container spacing={4}>
             <Grid size={{ xs: 12, md: 4 }}>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
+              <Box
+                sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}
+              >
                 <Box
                   component="img"
                   src={carsylogo}
@@ -745,74 +990,125 @@ const LandingPage = memo(function LandingPage() {
               </Box>
               <Typography variant="body2" sx={{ opacity: 0.7, maxWidth: 280 }}>
                 {/* TODO: Footer description */}
-                Brief description of your product or company. What makes you special?
+                {t(
+                  "footerDescription",
+                  "Inteligentne rozwiązania dla Twojego warsztatu. Zarządzaj łatwo i efektywnie.",
+                )}
               </Typography>
             </Grid>
             <Grid size={{ xs: 6, md: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: "white", mb: 2, fontWeight: 600 }}>
+              <Typography
+                variant="subtitle2"
+                sx={{ color: "white", mb: 2, fontWeight: 600 }}
+              >
                 {/* TODO: Column 1 title */}
-                Product
+                {t("productColumnTitle", "Product")}
               </Typography>
               <Stack spacing={1}>
-                <Typography variant="body2" sx={{ cursor: "pointer", "&:hover": { color: "white" } }}>
-                  Features
+                <Typography
+                  variant="body2"
+                  sx={{ cursor: "pointer", "&:hover": { color: "white" } }}
+                >
+                  {t("features", "Features")}
                 </Typography>
-                <Typography variant="body2" sx={{ cursor: "pointer", "&:hover": { color: "white" } }}>
-                  Pricing
+                <Typography
+                  variant="body2"
+                  sx={{ cursor: "pointer", "&:hover": { color: "white" } }}
+                >
+                  {t("pricing", "Pricing")}
                 </Typography>
-                <Typography variant="body2" sx={{ cursor: "pointer", "&:hover": { color: "white" } }}>
-                  Integrations
+                <Typography
+                  variant="body2"
+                  sx={{ cursor: "pointer", "&:hover": { color: "white" } }}
+                >
+                  {t("integrations", "Integrations")}
                 </Typography>
               </Stack>
             </Grid>
             <Grid size={{ xs: 6, md: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: "white", mb: 2, fontWeight: 600 }}>
+              <Typography
+                variant="subtitle2"
+                sx={{ color: "white", mb: 2, fontWeight: 600 }}
+              >
                 {/* TODO: Column 2 title */}
                 Company
               </Typography>
               <Stack spacing={1}>
-                <Typography variant="body2" sx={{ cursor: "pointer", "&:hover": { color: "white" } }}>
+                <Typography
+                  variant="body2"
+                  sx={{ cursor: "pointer", "&:hover": { color: "white" } }}
+                >
                   About
                 </Typography>
-                <Typography variant="body2" sx={{ cursor: "pointer", "&:hover": { color: "white" } }}>
+                <Typography
+                  variant="body2"
+                  sx={{ cursor: "pointer", "&:hover": { color: "white" } }}
+                >
                   Blog
                 </Typography>
-                <Typography variant="body2" sx={{ cursor: "pointer", "&:hover": { color: "white" } }}>
+                <Typography
+                  variant="body2"
+                  sx={{ cursor: "pointer", "&:hover": { color: "white" } }}
+                >
                   Careers
                 </Typography>
               </Stack>
             </Grid>
             <Grid size={{ xs: 6, md: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: "white", mb: 2, fontWeight: 600 }}>
+              <Typography
+                variant="subtitle2"
+                sx={{ color: "white", mb: 2, fontWeight: 600 }}
+              >
                 {/* TODO: Column 3 title */}
                 Support
               </Typography>
               <Stack spacing={1}>
-                <Typography variant="body2" sx={{ cursor: "pointer", "&:hover": { color: "white" } }}>
+                <Typography
+                  variant="body2"
+                  sx={{ cursor: "pointer", "&:hover": { color: "white" } }}
+                >
                   Help
                 </Typography>
-                <Typography variant="body2" sx={{ cursor: "pointer", "&:hover": { color: "white" } }}>
+                <Typography
+                  variant="body2"
+                  sx={{ cursor: "pointer", "&:hover": { color: "white" } }}
+                >
                   Contact
                 </Typography>
-                <Typography variant="body2" sx={{ cursor: "pointer", "&:hover": { color: "white" } }}>
+                <Typography
+                  variant="body2"
+                  sx={{ cursor: "pointer", "&:hover": { color: "white" } }}
+                >
                   Status
                 </Typography>
               </Stack>
             </Grid>
             <Grid size={{ xs: 6, md: 2 }}>
-              <Typography variant="subtitle2" sx={{ color: "white", mb: 2, fontWeight: 600 }}>
+              <Typography
+                variant="subtitle2"
+                sx={{ color: "white", mb: 2, fontWeight: 600 }}
+              >
                 {/* TODO: Column 4 title */}
-                Legal
+                {t("legalColumnTitle", "Legal")}
               </Typography>
               <Stack spacing={1}>
-                <Typography variant="body2" sx={{ cursor: "pointer", "&:hover": { color: "white" } }}>
-                  Terms
+                <Typography
+                  variant="body2"
+                  sx={{ cursor: "pointer", "&:hover": { color: "white" } }}
+                >
+                  {t("terms", "Terms")}
                 </Typography>
-                <Typography variant="body2" sx={{ cursor: "pointer", "&:hover": { color: "white" } }}>
-                  Privacy
+                <Typography
+                  variant="body2"
+                  sx={{ cursor: "pointer", "&:hover": { color: "white" } }}
+                >
+                  {t("privacy", "Privacy")}
                 </Typography>
-                <Typography variant="body2" sx={{ cursor: "pointer", "&:hover": { color: "white" } }}>
-                  Cookies
+                <Typography
+                  variant="body2"
+                  sx={{ cursor: "pointer", "&:hover": { color: "white" } }}
+                >
+                  {t("cookies", "Cookies")}
                 </Typography>
               </Stack>
             </Grid>
@@ -830,12 +1126,13 @@ const LandingPage = memo(function LandingPage() {
             }}
           >
             <Typography variant="body2" sx={{ opacity: 0.5 }}>
-              {/* TODO: Copyright */}
-              © 2026 Your Company. All rights reserved.
+              {/* TODO: Copyright */}© {new Date().getFullYear()}{" "}
+              <a href="https://www.gearcode.eu/">GearCode</a>. All rights
+              reserved.
             </Typography>
             <Typography variant="body2" sx={{ opacity: 0.5 }}>
               {/* TODO: Tagline */}
-              Made with ❤️
+              tu był maks
             </Typography>
           </Box>
         </Container>

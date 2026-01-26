@@ -2,12 +2,12 @@ import { ThemeProvider } from "@mui/material/styles";
 import { Box, Button } from "@mui/material";
 import React, { Suspense, lazy } from "react";
 import theme from "./styles/theme.ts";
-import ForgotPassword from "./comp/forgotPassword.tsx"; 
+// import ForgotPassword from "./comp/forgotPassword.tsx"; 
 import { useTranslation } from "react-i18next";
 
 // Lazy load heavy components for better performance
 // const MojWarsztat = lazy(() => import("./comp/mojWarsztat"));
-// const Login = lazy(() => import("./comp/login.tsx")); 
+const Login = lazy(() => import("./comp/login.tsx")); 
 const LandingPage = lazy(() => import("./comp/LandingPage.tsx"));
 // const Zlecenia = lazy(() => import("./comp/zlecenia.tsx"));
 
@@ -121,7 +121,7 @@ export default function App() {
                   flexDirection: "column",
                 }}
               >
-                <ForgotPassword />
+                <Login />
                 {/* <Zlecenia /> */}
               </Box>
             </Box>

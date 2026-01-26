@@ -139,7 +139,7 @@ const Login = memo(function Login() {
                 fontSize: { xs: "1.75rem", sm: "2.125rem" },
               }}
             >
-              Cyfrowy grafik dla prawdziwych fachowców
+              {t("grafikDlaFachowcow", "Cyfrowy grafik dla prawdziwych fachowców")}
             </Typography>
             <Typography
               component="p"
